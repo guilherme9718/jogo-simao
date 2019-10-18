@@ -1,8 +1,9 @@
 #include "Entidade.h"
 
-Entidade::Entidade() {
-    posicao.x = 0.0f;
-    posicao.y = 0.0f;
+Entidade::Entidade(Gerenciador_Grafico* gerenciador):
+Ent()
+{
+    pGG = gerenciador;
 }
 
 Entidade::~Entidade() {

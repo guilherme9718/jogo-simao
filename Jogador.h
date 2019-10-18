@@ -4,9 +4,10 @@
 
 class Jogador : public Personagem {
 public:
-    Jogador();
+    Jogador(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Jogador();
-private:
+    
+protected:
     
 };
 

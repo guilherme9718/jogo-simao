@@ -2,8 +2,9 @@
 #include "stdafx.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
+#include "Ent.h"
 
-class Fase : public Entidade {
+class Fase : public Ent {
 public:
     Fase();
     virtual ~Fase();
@@ -12,9 +13,7 @@ public:
     void gerenciar_colisoes();
     
 protected:
-    ListaEntidade objetos;
-    ListaEntidade personagens;
-    ListaEntidade obstaculos;
+    ListaEntidade entidades;
     
     
 };

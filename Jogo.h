@@ -3,6 +3,11 @@
 #include "Fase.h"
 #include "Jogador.h"
 #include "Menu.h"
+#include "Gerenciador_Grafico.h"
+#include "Montanha.h"
+#include "Floresta.h"
+#include "Huatli.h"
+#include "Angrath.h"
 
 class Jogo {
 public:
@@ -12,12 +17,13 @@ public:
     void executar();
     
 private:
-    Jogador* j1; 
-    Jogador* j2;
+    Huatli* j1; 
+    Angrath* j2;
     
     Menu m1;
     
-    Fase* f1;
-    Fase* f2; 
+    Montanha* f1;
+    Floresta* f2; 
     
+    Gerenciador_Grafico GG;
 };

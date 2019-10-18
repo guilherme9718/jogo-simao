@@ -6,7 +6,7 @@ class Inimigo : public Personagem {
 public:
     Inimigo();
     virtual ~Inimigo();
-private:
+protected:
 
 };
 

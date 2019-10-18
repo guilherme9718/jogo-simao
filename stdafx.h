@@ -6,4 +6,5 @@
 using namespace sf;
 
 #include <iostream>
+#include <vector>
 using namespace std;

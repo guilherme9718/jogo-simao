@@ -1,7 +1,8 @@
 #include "Jogo.h"
 
-Jogo::Jogo() {
-    
+Jogo::Jogo()
+{
+    j1 = new Huatli(&GG);
 }
 
 Jogo::~Jogo() {
@@ -9,5 +10,13 @@ Jogo::~Jogo() {
 }
     
 void Jogo::executar() {
-    cout << "Hello World!";
+    while (GG.getAberto()) {
+        GG.getJanela()->clear(Color::Black);
+        GG.leEventos();
+        
+        
+        j1->mover();
+        j1->imprimir();
+        GG.getJanela()->display();
+    }
 }

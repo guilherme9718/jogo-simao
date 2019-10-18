@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "Entidade.h"
+#include "Ent.h"
 
-class Menu : public Entidade {
+class Menu : public Ent {
 public:
     Menu();
     ~Menu();

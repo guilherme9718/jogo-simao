@@ -6,7 +6,7 @@ class Obstaculo : public Entidade {
 public:
     Obstaculo();
     virtual ~Obstaculo();
-private:
+protected:
 
 };
 

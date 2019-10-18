@@ -4,11 +4,14 @@
 
 class Personagem : public Entidade {
 public:
-    Personagem();
+    Personagem(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Personagem();
     
-private:
+    virtual void mover() = 0;
+    virtual void imprimir();
+protected:
     int vidas;
+    float velocidade;
 };
 
 
