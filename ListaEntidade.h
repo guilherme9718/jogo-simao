@@ -8,9 +8,13 @@ public:
     ListaEntidade();
     ~ListaEntidade();
     
-    void percorrer();
+    void percorrerExecutar();
+    void percorrerImprimir();
+    
+    void colidirTodos(Entidade* obj);
     
     void incluir(Entidade* ent);
+    void excluir(int id);
     void limpar();
 private:
     Lista<Entidade> LEs;

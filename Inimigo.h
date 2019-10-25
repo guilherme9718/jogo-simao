@@ -4,10 +4,12 @@
 
 class Inimigo : public Personagem {
 public:
-    Inimigo();
+    Inimigo(Gerenciador_Grafico* g = NULL);
     virtual ~Inimigo();
-private:
-
+    
+    const bool getMorto() const { return morto; }
+protected:
+    bool morto;
 };
 
 
