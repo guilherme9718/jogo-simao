@@ -2,20 +2,28 @@
 #include "stdafx.h"
 #include "Entidade.h"
 #include "ListaEntidade.h"
+#include "Ent.h"
+#include "Huatli.h"
 
-class Fase : public Entidade {
+
+class Jogo;
+
+class Fase : public Ent {
 public:
-    Fase();
+    Fase(Jogo* jooj = NULL);
     virtual ~Fase();
     
-    void executar();
-    void gerenciar_colisoes();
+    virtual void executar();
+    virtual void gerenciar_colisoes();
+    virtual void reiniciar();
+    //Sets e Gets
     
+    void setJogo(Jogo* jooj) { pJogo = jooj; }
 protected:
-    ListaEntidade objetos;
-    ListaEntidade personagens;
-    ListaEntidade obstaculos;
+    ListaEntidade entidades;
     
+    Jogo* pJogo;
+    Huatli* jogador;
     
 };
 

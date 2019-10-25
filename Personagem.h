@@ -4,11 +4,20 @@
 
 class Personagem : public Entidade {
 public:
-    Personagem();
+    Personagem(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Personagem();
     
-private:
+    virtual void Colidindo(Vector2f direcao);
+    virtual void mover();
+    virtual void executar();
+    virtual void morrer() = 0;
+protected:
     int vidas;
+    float velocidade;
+    float totalT;
+    bool noChao;
+    bool aDireita;
+    Vector2f movimento;
 };
 
 
