@@ -1,4 +1,5 @@
 #include "ListaEntidade.h"
+#include "Jogador.h"
 
 
 ListaEntidade::ListaEntidade() {
@@ -28,15 +29,19 @@ void ListaEntidade::percorrerImprimir() {
     }
 }
 
-void ListaEntidade::colidirTodos(Entidade* obj) {
-    Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro();
+void ListaEntidade::colidirTodos(Jogador* jog) {
+    Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
     Vector2f direcao(0.0f, 0.0f);
     
     while(itr) {
-        if(itr->getAtual() != obj)
-            itr->getAtual()->verificarColisao(obj->getColisora(), direcao, 0.0f);
+        aux = itr->getProx();
+        if(itr->getAtual()->verificarColisao(jog->getColisora(), direcao, 0.0f);
+        if(jog->getAtacando())
+            if(itr->getAtual()->verificarColisao(jog->getHitbox()->getColisora(), direcao)) {
+                excluir(itr);
+            }
         
-        itr = itr->getProx();
+        itr = aux;
     }
 }
 
@@ -46,6 +51,27 @@ void ListaEntidade::incluir(Entidade* ent) {
 
 void ListaEntidade::limpar() {
     LEs.limpar();
+}
+
+void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade>* no) {
+    Lista<Entidade>::Elemento<Entidade> *aux = NULL;
+    
+    if(no) {
+        if(no->getProx()) {
+            if(no->getAnt()) {
+                no->getAnt()->setProx(no->getProx());
+                no->getProx()->setAnt(no->getAnt());
+            }
+            else {
+                no->getProx()->setAnt(NULL);
+            }
+        }
+        else {
+            no->getAnt()->setProx(NULL);
+        }
+        delete no->getAtual();
+        delete no;
+    }
 }
 
 void ListaEntidade::excluir(int id) {

@@ -14,6 +14,12 @@ public:
     void imprimir();
     
     virtual void executar();
+    
+    //Sets e Gets
+    
+    const bool getAtacando() const { return atacando; }
+    Corpo_Grafico* getHitbox() { return &hitbox; }
+    
 protected:
     Vector2f posInicial;
     Corpo_Grafico hitbox;
