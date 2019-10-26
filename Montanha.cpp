@@ -26,16 +26,16 @@ Montanha::~Montanha() {
 void Montanha::executar() {
     
     
-//    plat->executar();
-//    if(andi)
-//        andi->mover();
-//    jogador->executar();
-//    gerenciar_colisoes();
-//    if(andi)
-//        andi->imprimir();
-//    jogador->imprimir();
-//    plat->imprimir();
-//    plat2->imprimir();
+    plat->executar();
+    if(andi)
+        andi->mover();
+    jogador->executar();
+    gerenciar_colisoes();
+    if(andi)
+        andi->imprimir();
+    jogador->imprimir();
+    plat->imprimir();
+    plat2->imprimir();
 
 }
 
