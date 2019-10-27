@@ -31,7 +31,7 @@ void Andino::mover() {
     totalT += dT;
     movimento.x = velocidade * lado;
 
-    chancePulo = rand() % 2000;
+    chancePulo = rand() % 1000;
     
 
     if(!chancePulo && noChao)

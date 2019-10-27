@@ -4,8 +4,7 @@
 Animadora::Animadora(Corpo_Grafico* corpo) {
     pCorpo = corpo;
     textura = NULL;
-    if(corpo)
-        textura = pCorpo->getTextura();
+    
     inicializa(Vector2f(0, 0), Vector2u(0, 0), Vector2u(1, 1));
 }
 
@@ -21,6 +20,9 @@ void Animadora::inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vect
     quadrosAtuais.x = 0;
     quadrosAtuais.y = 0;
     margem = margemErro;
+    
+    if(pCorpo)
+        textura = pCorpo->getTextura();
     
     quadro.width = textura->getSize().x / (float)(TotalDeQuadros.x);
     quadro.height = (textura->getSize().y / (float)(TotalDeQuadros.y));

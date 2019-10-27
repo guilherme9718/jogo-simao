@@ -82,10 +82,10 @@ Fase(jooj)
     plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(0, 830));
     entidades.incluir(static_cast<Entidade*>(plat));
 
-    plat = new Plataforma(Vector2f(500.0f, 60.0f));
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
     plat->setGerenciador(pJogo->getGerenciador());
     plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 830));
-    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::Red);
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
     entidades.incluir(static_cast<Entidade*>(plat));
 
     //cout << plat->getPosicao().x << " " << plat->getPosicao().y << endl;
@@ -96,10 +96,10 @@ Fase(jooj)
     andi->setPlataforma(plat);
     entidades.incluir(static_cast<Entidade*>(andi));
 
-    plat = new Plataforma(Vector2f(500.0f, 60.0f));
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
     plat->setGerenciador(pJogo->getGerenciador());
     plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(1700, 630));
-    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::Red);
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
     entidades.incluir(static_cast<Entidade*>(plat));
 
     aux = (plat->getTamanho().x / 2.0f) - 50.0f;
@@ -108,10 +108,10 @@ Fase(jooj)
     andi->setPlataforma(plat);
     entidades.incluir(static_cast<Entidade*>(andi));
 
-    plat = new Plataforma(Vector2f(500.0f, 60.0f));
+    plat = new Plataforma(Vector2f(500.0f, 100.0f));
     plat->setGerenciador(pJogo->getGerenciador());
     plat->getCorpoGraf()->getCorpo()->setPosition(Vector2f(900, 380));
-    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::Red);
+    plat->getCorpoGraf()->getCorpo()->setFillColor(sf::Color::White);
     entidades.incluir(static_cast<Entidade*>(plat));
 
     aux = (plat->getTamanho().x / 2.0f) - 50.0f;

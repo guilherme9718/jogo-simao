@@ -22,8 +22,10 @@ void Inimigo::imprimir(){
 
 bool Inimigo::verificarAtacando(Colisora* outro, Vector2f& direcao)
 {
-    if(corpo.getColisora()->verificarColisao(plat->getColisora(), direcao, 0.0f))
+    if(corpo.getColisora()->verificarColisao(plat->getColisora(), direcao, 0.0f)) {
+        noChao = true;
         Colidindo(direcao);
+    }
 
     if(verificarColisao(outro, direcao))
         return false;

@@ -31,17 +31,17 @@ public:
     //virtual bool verificarColisao(Colisora* outro, Vector2f& direcao) { return corpo.getColisora()->verificarColisao(outro, direcao, f); }
 
 
-    //Gerenciadoras de colisão
+    //Gerenciadoras de colisï¿½o
 
     virtual bool verificarAtacando(Colisora* outro, Vector2f& direcao) {return true;}
-    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
+    //Retorna true se estï¿½ havendo colisao e o outro estï¿½ sobrevivendo ï¿½ colisï¿½o
 
     virtual bool verificarColisao(Colisora* outro, Vector2f& direcao)
         {return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);}
-    //Retorna true se está havendo colisão
+    //Retorna true se estï¿½ havendo colisï¿½o
 
     virtual bool verificarAtaque(Colisora* outro, Vector2f& direcao) {return false;}
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+    //Retorna true se estï¿½ havendo colisï¿½o e se o jogador pode matar quem esta entidade
 
     void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
 protected:

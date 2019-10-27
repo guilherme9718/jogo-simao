@@ -8,19 +8,19 @@ public:
     Plataforma(Vector2f tam = Vector2f(100.0f, 100.0f), Texture* tex = NULL);
     ~Plataforma();
 
-    void executar() {};
+    void executar() {corpo.atualizaAnimacao(0.1, true, 0, 0, 0, 0);};
     void Colidindo(Vector2f direcao) {} ;
 
-    //Gerenciadoras de colisão
+    //Gerenciadoras de colisï¿½o
     bool verificarAtacando(Colisora* outro, Vector2f& direcao)
-    //Retorna true se está havendo colisao e o outro está sobrevivendo à colisão
+    //Retorna true se estï¿½ havendo colisao e o outro estï¿½ sobrevivendo ï¿½ colisï¿½o
         {return true;}
 
     bool verificarColisao(Colisora* outro, Vector2f& direcao);
-    //Retorna true se está havendo colisão
+    //Retorna true se estï¿½ havendo colisï¿½o
 
     bool verificarAtaque(Colisora* outro, Vector2f& direcao)
-    //Retorna true se está havendo colisão e se o jogador pode matar quem esta entidade
+    //Retorna true se estï¿½ havendo colisï¿½o e se o jogador pode matar quem esta entidade
         {return false;}
 
 private:
