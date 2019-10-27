@@ -1,8 +1,10 @@
 #include "Entidade.h"
+#include "Plataforma.h"
 
 Entidade::Entidade(Gerenciador_Grafico* gerenciador):
 Ent()
 {
+    plat = NULL;
     pGG = gerenciador;
 }
 

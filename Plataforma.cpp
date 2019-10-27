@@ -9,7 +9,7 @@ Plataforma::Plataforma(Vector2f tam, Texture* tex)
 Plataforma::~Plataforma() {
 }
 
-void Plataforma::executar() {
-
+bool Plataforma::verificarColisao(Colisora* outro, Vector2f& direcao)
+{
+    return corpo.getColisora()->verificarColisao(outro, direcao, 1.0f);
 }
-
