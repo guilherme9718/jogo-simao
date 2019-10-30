@@ -19,6 +19,8 @@ public:
     //Sets e Gets
 
     Gerenciador_Grafico* getGerenciador() { return &GG; }
+    
+    
 
     void setJogador1 (Huatli* jogador1) { j1 = jogador1; }
     void setJogador2 (Angrath* jogador2) { j2 = jogador2; }
@@ -28,7 +30,7 @@ private:
 
     Menu m1;
 
-    Montanha* f1;
+    Montanha* montanha;
     Floresta* f2;
 
     Gerenciador_Grafico GG;

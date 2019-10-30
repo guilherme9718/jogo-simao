@@ -8,9 +8,9 @@ public:
     ~Huatli();
 
     void mover();
-    
+
 private:
-    
+
     float pulo;
-    
+
 };
