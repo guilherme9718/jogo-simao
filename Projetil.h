@@ -7,6 +7,6 @@ public:
     Projetil();
     ~Projetil();
 private:
-
+    
 };
 

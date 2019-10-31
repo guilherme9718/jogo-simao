@@ -5,20 +5,32 @@
 #include "Jogador.h"
 #include "Huatli.h"
 #include "Andino.h"
+#include "Colisora.h"
 
 class Montanha : public Fase {
 public:
     Montanha(Jogo* jooj = NULL);
     ~Montanha();
-    
+
     void executar();
-    void gerenciar_colisoes();
+    //void gerenciar_colisoes();
+
 private:
+
+    Colisora* colisora;
     
     Plataforma* plat;
-    Plataforma* plat2;
+    //Plataforma* plat2;
     Andino* andi;
     
+    RectangleShape fundo[5];
+    Texture texturaFundo[5];
     
+    int i;
+    
+    unsigned short int contPlat;
+    unsigned short int contInim;
+    unsigned short int contObs;
+    unsigned short int contJog;
 };
 

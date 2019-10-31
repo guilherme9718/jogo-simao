@@ -4,46 +4,46 @@
 template <class TL>
 class Lista {
 public:
-    
+
     template <class TE>
     class Elemento {
         public:
             Elemento() { atual = NULL; pProx = NULL; pAnt = NULL; }
             ~Elemento() { }
-            
+
             //Sets e Gets
-            
+
             void setAtual(TE* elem) { atual = elem; }
             TE* getAtual() const { return atual; }
-            
+
             void setProx(Elemento<TE>* prox) { pProx = prox; }
             Elemento<TE>* getProx() const { return pProx; }
-            
+
             void setAnt(Elemento<TE>* ant) { pAnt = ant; }
             Elemento<TE>* getAnt() const { return pAnt; }
-            
+
         private:
             TE* atual;
             Elemento<TE>* pProx;
             Elemento<TE>* pAnt;
     };
-    
+
     Lista();
     ~Lista();
-    
+
     void incluir(TL* elemento);
     void limpar();
-    
+
     //Sets e Gets
-    
+
     void setPrimeiro(Elemento<TL>* primeiro) { pPrimeiro = primeiro; }
     Elemento<TL>* getPrimeiro () const { return pPrimeiro; }
-    
+
     void setUltimo(Elemento<TL>* ultimo) { pUltimo = ultimo; }
     Elemento<TL>* getUltimo () const { return pUltimo; }
-    
+
     int getTamanho () const { return tamanho; }
-    
+
 private:
     int tamanho;
     Elemento<TL>* pPrimeiro;
@@ -65,7 +65,7 @@ Lista<TL>::~Lista() {
 
 template <class TL>
 void Lista<TL>::incluir(TL* elemento) {
-    if (pPrimeiro) {
+    if (!pPrimeiro) {
         pPrimeiro = new Elemento<TL>;
         pPrimeiro->setAtual(elemento);
         pUltimo = pPrimeiro;
@@ -82,7 +82,7 @@ void Lista<TL>::incluir(TL* elemento) {
 template <class TL>
 void Lista<TL>::limpar() {
     Elemento<TL> *itr = pPrimeiro, *aux = NULL;
-    
+
     while(itr) {
         aux = itr->getProx();
         delete itr;

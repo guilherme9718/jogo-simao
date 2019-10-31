@@ -6,10 +6,13 @@ class Inimigo : public Personagem {
 public:
     Inimigo(Gerenciador_Grafico* g = NULL);
     virtual ~Inimigo();
-    
-    const bool getMorto() const { return morto; }
+
+    void executar();
+    virtual void imprimir();
+
 protected:
     bool morto;
+
 };
 
 

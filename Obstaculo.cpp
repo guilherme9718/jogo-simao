@@ -1,6 +1,9 @@
 #include "Obstaculo.h"
 
-Obstaculo::Obstaculo() {
+Obstaculo::Obstaculo(){
+    podeMatar = false;
+    podeMorrer = false;
+    empurrao = 1.0f;
 }
 
 Obstaculo::~Obstaculo() {

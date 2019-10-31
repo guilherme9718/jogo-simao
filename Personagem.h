@@ -6,19 +6,25 @@ class Personagem : public Entidade {
 public:
     Personagem(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Personagem();
-    
-    virtual void Colidindo(Vector2f direcao);
-    virtual void mover();
+
+    virtual void imprimir();
+    //virtual void Colidindo(Vector2f direcao);
     virtual void executar();
-    virtual void morrer() = 0;
-    virtual bool verificarColisao(Colisora* outro, Vector2f& direcao, float f);
+    
+    virtual void animar(Vector2f movimento);
+
 protected:
     int vidas;
     float velocidade;
+    
+    bool atacando;
     float totalT;
-    bool noChao;
+    
+    bool aDireita;
     short int lado;
-    Vector2f movimento;
+    
+    
+    
 };
 
 
