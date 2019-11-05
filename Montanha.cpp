@@ -4,6 +4,7 @@
 Montanha::Montanha(Jogo* jooj):
 Fase(jooj)
 {
+    doisJogadores = true;
     srand(time(NULL));
     colisora = new Colisora();
 
@@ -12,10 +13,14 @@ Fase(jooj)
     jogador1 = new Huatli(pJogo->getGerenciador());
     pJogo->setJogador1(jogador1);
     entidades.incluir(static_cast<Entidade*>(jogador1));
+    
+    if(doisJogadores) {
+        jogador2 = new Angrath(pJogo->getGerenciador());
+        pJogo->setJogador2(jogador2);
+        entidades.incluir(static_cast<Entidade*>(jogador2));
+    }
 
     instanciaFundo();
-    
-    entidades.incluir(static_cast<Entidade*>(jogador1->getProjetil()));
     
     
     // Instanciar plataformas
@@ -41,9 +46,13 @@ void Montanha::executar() {
         fundo[i].setPosition(pJogo->getGerenciador()->getVisao()->getCenter());
         pJogo->getGerenciador()->desenhar(&fundo[i]);
     }
+    
     entidades.executar();
     entidades.imprimir();
-    entidades.colidir(jogador1, colisora);
+    if(doisJogadores)
+        entidades.colidir(jogador1, jogador2, colisora);
+    else
+        entidades.colidir(jogador1, colisora);
 
 }
 
@@ -52,10 +61,11 @@ void Montanha::instanciaPlataformas() {
     Vector2f pos, tam;
     Plataforma* plat;
     float aux, aux2;
+    int tipo;
     
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist(0,2);
+    std::uniform_int_distribution<std::mt19937::result_type> dist(0,0);
     
     
     if (!plats)
@@ -69,6 +79,7 @@ void Montanha::instanciaPlataformas() {
 
     plats >> tam.x >> tam.y;
     plats >> pos.x >> pos.y;
+    plats >> tipo;
 
     plat = new Plataforma(tam);
     plat->setGerenciador(pJogo->getGerenciador());
@@ -81,6 +92,7 @@ void Montanha::instanciaPlataformas() {
     {
         plats >> tam.x >> tam.y;
         plats >> pos.x >> pos.y;
+        plats >> tipo;
 
         plat = new Plataforma(tam);
         plat->setGerenciador(pJogo->getGerenciador());
@@ -89,10 +101,12 @@ void Montanha::instanciaPlataformas() {
 
         int aleatorio = dist(rng);
         
-        if(aleatorio == 0)
-            instanciaInimigos(plat);
-        else if (aleatorio == 1)
-            instanciaObstaculos(plat);
+        if(tipo) {
+            if(aleatorio == 0)
+                instanciaInimigos(plat);
+            else if (aleatorio == 1)
+                instanciaObstaculos(plat);
+        }
 
     }
 

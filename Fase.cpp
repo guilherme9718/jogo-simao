@@ -4,6 +4,7 @@
 Fase::Fase(Jogo* jooj):
 Ent()
 {
+    doisJogadores = false;
     pJogo = jooj;
 }
 

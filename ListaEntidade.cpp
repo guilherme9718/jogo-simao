@@ -41,11 +41,6 @@ void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
     while(itr)
     {
         aux = itr->getProx();
-        if(itr->getAtual() == static_cast<Entidade*>(j->getProjetil()))
-        {
-            itr = aux;
-            continue;
-        }
         
         if(colisora->atacando(itr->getAtual(), jog, direcao))
         {
@@ -59,7 +54,10 @@ void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
             if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
                 {
                     if(itr->getAtual()->tomarDano())
+                    {
+                        j->setPontos(29);
                         excluir(itr);
+                    }
                 }
             }
             itr = aux;
@@ -67,6 +65,71 @@ void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
         else{
             j->morrer();
         }
+    }
+}
+
+void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
+    Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
+    Vector2f direcao(0.0f, 0.0f);
+    
+    Entidade* jog = static_cast<Entidade*>(j);
+    Entidade* jog2 = static_cast<Entidade*>(j2);
+
+    itr = itr->getProx()->getProx();
+
+    // 0 empurra
+    // 1 n�o empurra
+
+    while(itr)
+    {
+        aux = itr->getProx();
+        
+        if(colisora->atacando(itr->getAtual(), jog, direcao))
+        {
+            if(itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+
+            colisora->colidir(itr->getAtual(), jog, direcao);
+            if(j->getAtacando())
+            {
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
+                {
+                    if(itr->getAtual()->tomarDano())
+                    {
+                        j->setPontos(29);
+                        excluir(itr);
+                    }
+                }
+            }
+        }
+        else{
+            j->morrer(j->getGerenciador()->getVisao()->getCenter());
+        }
+        
+        if(colisora->atacando(itr->getAtual(), jog2, direcao))
+        {
+            if(itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+
+            colisora->colidir(itr->getAtual(), jog2, direcao);
+            if(j2->getAtacando())
+            {
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j2->getProjetil()), direcao))
+                {
+                    if(itr->getAtual()->tomarDano())
+                    {
+                        j2->setPontos(29);
+                        excluir(itr);
+                    }
+                }
+            }
+        }
+        else{
+            j2->morrer(j2->getGerenciador()->getVisao()->getCenter());
+        }
+                itr = aux;
     }
 }
 
@@ -94,8 +157,8 @@ void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade>* no) {
         else {
             no->getAnt()->setProx(NULL);
         }
-        delete no->getAtual();
-        delete no;
+        //delete no->getAtual();
+        //delete no;
     }
 }
 

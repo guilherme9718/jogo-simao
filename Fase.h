@@ -29,6 +29,8 @@ protected:
     Jogo* pJogo;
     Huatli* jogador1;
     Angrath* jogador2;
+    
+    bool doisJogadores;
 
 };
 

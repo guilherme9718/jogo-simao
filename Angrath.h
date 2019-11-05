@@ -13,6 +13,6 @@ public:
 private:
 
     float pulo;
-
+    float vJog;
 };
 

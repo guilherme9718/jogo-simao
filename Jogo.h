@@ -37,4 +37,5 @@ private:
 
     float dT;
     Clock clock;
+    bool doisJogadores;
 };

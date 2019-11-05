@@ -9,7 +9,8 @@ public:
     Jogador(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Jogador();
 
-    virtual void morrer();
+    void morrer();
+    void morrer(Vector2f pos);
     bool atacar(Inimigo* inim);
 
     void imprimir();
@@ -22,6 +23,9 @@ public:
     Corpo_Grafico* getHitbox() { return hitbox->getCorpoGraf(); }
     
     Projetil* getProjetil() { return hitbox; }
+    
+    void setPontos (const int p) { pontos += p; }
+    int getPontos() const { return pontos; }
 
 protected:
     Vector2f posInicial;
@@ -29,6 +33,7 @@ protected:
     bool ataquePronto;
     short ladoAtaque;
 
+    int pontos;
 };
 
 

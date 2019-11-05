@@ -2,7 +2,7 @@
 #include "Plataforma.h"
 
 Entidade::Entidade(Gerenciador_Grafico* gerenciador):
-Ent(), podeMatar(true), podeMorrer(true), empurrao(1.0f), movimento(0.0f, 0.0f), noChao(true)
+Ent(), podeMatar(true), podeMorrer(true), empurrao(1.0f), movimento(0.0f, 0.0f), noChao(true), morto(false)
 {
     vidas = 1;
     plat = NULL;

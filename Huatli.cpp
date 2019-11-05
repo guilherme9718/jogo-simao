@@ -3,7 +3,6 @@
 Huatli::Huatli(Gerenciador_Grafico* g):
 Jogador(g), pulo(700), vJog(0)
 {
-    vidas = 3;
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
     corpo.setTextura("Texturas/Dinos/doux.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
@@ -23,7 +22,7 @@ Huatli::~Huatli() {
 void Huatli::executar() {
     totalT += pGG->getDt();
 
-    if(Keyboard::isKeyPressed(Keyboard::F) && ataquePronto) {
+    if(Keyboard::isKeyPressed(Keyboard::LControl) && ataquePronto) {
         atacando = true;
         totalT -= 0.5f;
         hitbox->getCorpoGraf()->getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * lado), corpo.getPosicao().y);
@@ -42,11 +41,9 @@ void Huatli::executar() {
         ataquePronto = true;
     }
     
-    
-    cout << vJog << endl;
 
     hitbox->getCorpoGraf()->getCorpo()->move((298.0f + vJog) * pGG->getDt() * ladoAtaque, 0.0f);
-    //if(atacando)
+    if(atacando)
         hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
 
 

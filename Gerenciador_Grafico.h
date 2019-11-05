@@ -13,6 +13,9 @@ public:
     void desenhar (RectangleShape* elem) { janela.draw(*elem); }
     View* getVisao () { return &visao; }
 
+    void instanciaTexto();
+    void imprimePontuacao(int pontos);
+    
     void setDt(float delta) {dT = delta;}
     const float getDt () const {return dT;}
 private:
@@ -25,6 +28,9 @@ private:
     float LP;
     float AP;
 
+    Font fonte;
+    Text texto;
+    
 };
 
 

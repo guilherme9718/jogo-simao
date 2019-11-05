@@ -59,6 +59,8 @@ protected:
     bool podeMatar;
     bool podeMorrer;
     float empurrao;
+    
+    bool morto;
 };
 
 
