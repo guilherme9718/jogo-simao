@@ -3,43 +3,18 @@
 Jogador::Jogador(Gerenciador_Grafico* gerenciador):
 Personagem(gerenciador), ataquePronto(true), ladoAtaque(1)
 {
+    vidas = 5;
     lado = 1;
     aDireita = true;
-    hitbox.inicializa(Vector2f(100.0f, 100.0f), NULL);
+    hitbox = new Projetil(pGG);
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
     posInicial = Vector2f(0.0f, 0.0f);
-    
+
     podeMatar = false;
 }
 
 Jogador::~Jogador() {
 
-}
-
-void Jogador::executar() {
-    totalT += pGG->getDt();
-    if(Keyboard::isKeyPressed(Keyboard::F) && ataquePronto) {
-        atacando = true;
-        totalT -= 0.5f;
-        hitbox.getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * lado), corpo.getPosicao().y);
-        ataquePronto = false;
-        ladoAtaque = lado;
-    }
-    if(atacando && totalT >= 0.5f) {
-        atacando = false;
-        totalT -= 0.5f;
-        ataquePronto = true;
-    }
-    
-    hitbox.getCorpo()->move(291.0f * pGG->getDt() * ladoAtaque, 0.0f);
-    
-    if(atacando)
-        hitbox.getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
-        
-
-    if(corpo.getPosicao().y > 2000.0f)
-        morrer();
-    
-    mover();
 }
 
 void Jogador::morrer() {
@@ -65,7 +40,7 @@ void Jogador::morrer() {
 void Jogador::imprimir() {
 
     if(atacando)
-        pGG->desenhar(hitbox.getCorpo());
+        pGG->desenhar(hitbox->getCorpoGraf()->getCorpo());
 
     pGG->desenhar(corpo.getCorpo());
 

@@ -11,7 +11,6 @@ public:
     virtual void imprimir();
 
 protected:
-    bool morto;
 
 };
 

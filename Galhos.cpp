@@ -1,6 +1,7 @@
 #include "Galhos.h"
 
-Galhos::Galhos() {
+Galhos::Galhos(Gerenciador_Grafico* g):
+Obstaculo(g){
 }
 
 Galhos::~Galhos() {

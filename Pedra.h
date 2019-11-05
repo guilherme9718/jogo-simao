@@ -4,9 +4,11 @@
 
 class Pedra : public Obstaculo {
 public:
-    Pedra();
+    Pedra(Gerenciador_Grafico* g);
     ~Pedra();
-    
+
+    void executar() {}
+
 private:
 
 };

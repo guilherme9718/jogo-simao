@@ -3,7 +3,7 @@
 Jogo::Jogo()
 {
     montanha = new Montanha(this);
-    j1 = montanha->getJogador();
+    j2 = montanha->getJogador2();
     srand(time(NULL));
 }
 

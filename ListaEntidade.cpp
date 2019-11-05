@@ -41,18 +41,25 @@ void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
     while(itr)
     {
         aux = itr->getProx();
+        if(itr->getAtual() == static_cast<Entidade*>(j->getProjetil()))
+        {
+            itr = aux;
+            continue;
+        }
+        
         if(colisora->atacando(itr->getAtual(), jog, direcao))
         {
             if(itr->getAtual()->getPlataforma())
                 colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
-            
+
             colisora->colidir(itr->getAtual(), jog, direcao);
             if(j->getAtacando())
             {
-               
-            if(colisora->ataque(itr->getAtual(), jog, direcao))
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
                 {
-                    excluir(itr);
+                    if(itr->getAtual()->tomarDano())
+                        excluir(itr);
                 }
             }
             itr = aux;

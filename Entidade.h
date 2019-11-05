@@ -16,7 +16,6 @@ public:
     virtual void mover() {}
     virtual void imprimir();
 
-    //virtual void Colidindo(Vector2f direcao) = 0;
 
     //Sets e gets
 
@@ -28,25 +27,35 @@ public:
     void setPlataforma(Plataforma* p) { plat  = p; }
 
     void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
-    
+
     void setMovimento(Vector2f mov) { movimento = mov; }
     Vector2f getMovimento() { return movimento; }
-    
+
     void setChao(bool chao) { noChao = chao; }
     bool getChao() { return noChao; }
-    
+
     bool getPodeMorrer() { return podeMorrer; }
     bool getPodeMatar() { return podeMatar; }
     float getEmpurrao() { return empurrao; }
+
+    int getVidas() { return vidas; }
+    void setVidas(int v) { vidas = v; }
+
+    bool tomarDano();
+    
+    Gerenciador_Grafico* getGerenciador() { return pGG; }
+
 protected:
     Corpo_Grafico corpo;
     Gerenciador_Grafico *pGG;
     Plataforma* plat;
-    
+
     Vector2f movimento;
-    
+
+    int vidas;
+
     bool noChao;
-    
+
     bool podeMatar;
     bool podeMorrer;
     float empurrao;

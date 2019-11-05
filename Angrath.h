@@ -4,9 +4,15 @@
 
 class Angrath : public Jogador {
 public:
-    Angrath();
+    Angrath(Gerenciador_Grafico* g);
     ~Angrath();
+
+    void mover();
+    void executar();
+
 private:
+
+    float pulo;
 
 };
 

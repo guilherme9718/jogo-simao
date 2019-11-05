@@ -1,19 +1,18 @@
 #include "Personagem.h"
 
-Personagem::Personagem(Gerenciador_Grafico* gerenciador):
-Entidade(gerenciador)
+Personagem::Personagem(Gerenciador_Grafico* g):
+Entidade(g)
 {
-    vidas = 3;
     velocidade = 500.0f;
-    
+
     atacando = false;
     totalT = 0.0f;
-    
+
     noChao = true;
-    
+
     aDireita = false;
     lado = 1;
-    
+
     podeMorrer = true;
 }
 
@@ -76,7 +75,7 @@ void Personagem::animar(Vector2f movimento) {
             aDireita = false;
         }
     }
-    
+
     corpo.atualizaAnimacao(pGG->getDt(), aDireita, animacao.x, animacao.y, tempoTrocaAnimacao, 0);
 }
 

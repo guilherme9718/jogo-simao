@@ -4,11 +4,11 @@
 Inimigo::Inimigo(Gerenciador_Grafico* g):
 Personagem(g)
 {
-    vidas = 1;
-    morto = false;
-    
     podeMatar = true;
+    podeMorrer = true;
     empurrao = 1.0f;
+
+    noChao = true;
 }
 
 Inimigo::~Inimigo() {
