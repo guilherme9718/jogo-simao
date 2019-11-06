@@ -4,13 +4,12 @@
 
 class Obstaculo : public Entidade {
 public:
-    Obstaculo();
+    Obstaculo(Gerenciador_Grafico* g);
     virtual ~Obstaculo();
 
     void Colidindo(Vector2f direcao) {} ;
 
 protected:
-
 
 };
 

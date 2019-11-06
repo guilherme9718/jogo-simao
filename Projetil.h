@@ -4,9 +4,12 @@
 
 class Projetil : public Entidade {
 public:
-    Projetil();
+    Projetil(Gerenciador_Grafico* GG = NULL);
     ~Projetil();
+    
+    void executar() { }
+    
 private:
-
+    
 };
 

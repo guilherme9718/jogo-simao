@@ -4,8 +4,10 @@
 
 class Carnivora : public Obstaculo {
 public:
-    Carnivora();
+    Carnivora(Gerenciador_Grafico* g);
     ~Carnivora();
+
+    void executar();
 private:
 
 };

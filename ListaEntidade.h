@@ -11,7 +11,9 @@ public:
 
     void executar();
     void imprimir();
-    void colidir(Jogador* jog);
+    
+    void colidir(Jogador* j, Colisora* colisora);
+    void colidir(Jogador* j, Jogador* j2, Colisora* colisora);
 
     void incluir(Entidade* ent);
     //void excluir(int id);

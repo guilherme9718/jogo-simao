@@ -85,6 +85,7 @@ void Lista<TL>::limpar() {
 
     while(itr) {
         aux = itr->getProx();
+        delete itr->getAtual();
         delete itr;
         itr = aux;
     }

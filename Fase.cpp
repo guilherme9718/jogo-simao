@@ -2,8 +2,9 @@
 #include "Jogo.h"
 
 Fase::Fase(Jogo* jooj):
-Ent()
+Ent(), jogador1(NULL), jogador2(NULL)
 {
+    doisJogadores = false;
     pJogo = jooj;
 }
 

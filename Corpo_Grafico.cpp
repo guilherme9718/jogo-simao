@@ -4,14 +4,12 @@ Corpo_Grafico::Corpo_Grafico()
 {
     corpo = NULL;
     animacao = NULL;
-    colisor = NULL;
     textura = NULL;
 }
 
 Corpo_Grafico::~Corpo_Grafico() {
     delete corpo;
     delete animacao;
-    delete colisor;
     delete textura;
 }
 
@@ -22,7 +20,6 @@ void Corpo_Grafico::inicializa(Vector2f tam, Texture* tex) {
 
     corpo->setTexture(tex);
 
-    colisor = new Colisora(corpo);
     textura = new Texture();
     animacao = new Animadora(this);
     

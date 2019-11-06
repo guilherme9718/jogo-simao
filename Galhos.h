@@ -4,9 +4,9 @@
 
 class Galhos : public Obstaculo {
 public:
-    Galhos();
+    Galhos(Gerenciador_Grafico* g);
     ~Galhos();
 private:
-    
+
 };
 

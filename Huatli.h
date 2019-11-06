@@ -8,9 +8,10 @@ public:
     ~Huatli();
 
     void mover();
+    void executar();
 
 private:
 
     float pulo;
-
+    float vJog;
 };

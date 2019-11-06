@@ -90,7 +90,6 @@ void Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quan
         }
     }
     
-    cout << quadrosAtuais.x << " " << quadrosAtuais.y << endl;
     
     if(aDireita) {
         quadro.left = quadrosAtuais.x * quadro.width;

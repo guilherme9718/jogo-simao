@@ -20,15 +20,18 @@ public:
 
     Gerenciador_Grafico* getGerenciador() { return &GG; }
     
+    void executaMenu();
     
 
     void setJogador1 (Huatli* jogador1) { j1 = jogador1; }
     void setJogador2 (Angrath* jogador2) { j2 = jogador2; }
+    
+    void setMenuAtivo(bool ativo) { menuAtivo = ativo; }
 private:
     Huatli* j1;
     Angrath* j2;
 
-    Menu m1;
+    Menu* menu;
 
     Montanha* montanha;
     Floresta* f2;
@@ -37,4 +40,6 @@ private:
 
     float dT;
     Clock clock;
+    bool doisJogadores;
+    bool menuAtivo;
 };

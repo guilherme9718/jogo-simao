@@ -28,34 +28,109 @@ void ListaEntidade::imprimir() {
     }
 }
 
-void ListaEntidade::colidir(Jogador* jog) {
+void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
     Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
     Vector2f direcao(0.0f, 0.0f);
+    Entidade* jog = static_cast<Entidade*>(j);
 
     itr = itr->getProx();
 
     // 0 empurra
-    // 1 não empurra
+    // 1 nï¿½o empurra
 
     while(itr)
     {
         aux = itr->getProx();
-        if(itr->getAtual()->verificarAtacando(jog->getColisora(), direcao))
+
+        if(colisora->atacando(itr->getAtual(), jog, direcao))
         {
-            if(itr->getAtual()->verificarColisao(jog->getColisora(), direcao))
-                jog->Colidindo(direcao);
-            if(jog->getAtacando())
+            if(itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+
+            colisora->colidir(itr->getAtual(), jog, direcao);
+            if(j->getAtacando())
             {
-                if(itr->getAtual()->verificarAtaque(jog->getHitbox()->getColisora(), direcao))
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
                 {
-                    excluir(itr);
+                    if(itr->getAtual()->tomarDano())
+                    {
+                        j->setPontos(29);
+                        excluir(itr);
+                    }
                 }
             }
             itr = aux;
         }
         else{
-            jog->morrer();
+            j->morrer();
         }
+    }
+}
+
+void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
+    Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
+    Vector2f direcao(0.0f, 0.0f);
+
+    Entidade* jog = static_cast<Entidade*>(j);
+    Entidade* jog2 = static_cast<Entidade*>(j2);
+
+    itr = itr->getProx()->getProx();
+
+    // 0 empurra
+    // 1 nï¿½o empurra
+
+    while(itr)
+    {
+        aux = itr->getProx();
+
+        if(colisora->atacando(itr->getAtual(), jog, direcao))
+        {
+            if(itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+
+            colisora->colidir(itr->getAtual(), jog, direcao);
+            if(j->getAtacando())
+            {
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
+                {
+                    if(itr->getAtual()->tomarDano())
+                    {
+                        j->setPontos(29);
+                        excluir(itr);
+                        itr = aux;
+                    }
+                }
+            }
+        }
+        else{
+            j->morrer(Vector2f(j2->getPosicao().x, -1000));
+        }
+
+        if(colisora->atacando(itr->getAtual(), jog2, direcao))
+        {
+            if(itr->getAtual()->getPlataforma())
+                colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+
+            colisora->colidir(itr->getAtual(), jog2, direcao);
+            if(j2->getAtacando())
+            {
+
+            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j2->getProjetil()), direcao))
+                {
+                    if(itr->getAtual()->tomarDano())
+                    {
+                        j2->setPontos(29);
+                        excluir(itr);
+                    }
+                }
+            }
+        }
+        else{
+            j2->morrer(Vector2f(j->getPosicao().x, -1000));
+        }
+                itr = aux;
     }
 }
 

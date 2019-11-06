@@ -4,6 +4,7 @@
 #include "ListaEntidade.h"
 #include "Ent.h"
 #include "Huatli.h"
+#include "Angrath.h"
 
 
 class Jogo;
@@ -18,14 +19,18 @@ public:
     virtual void reiniciar();
 
     //Sets e Gets
-    Huatli* getJogador() { return jogador; }
+    Huatli* getJogador1() { return jogador1; }
+    Angrath* getJogador2() { return jogador2; }
 
     void setJogo(Jogo* jooj) { pJogo = jooj; }
 protected:
     ListaEntidade entidades;
 
     Jogo* pJogo;
-    Huatli* jogador;
+    Huatli* jogador1;
+    Angrath* jogador2;
+    
+    bool doisJogadores;
 
 };
 
