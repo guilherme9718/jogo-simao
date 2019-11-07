@@ -3,8 +3,8 @@
 Angrath::Angrath(Gerenciador_Grafico* g):
 Jogador(g), pulo(700), vJog(0)
 {
-    vidas = 3;
-    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
+    vidas = 10;
+    corpo.inicializa(Vector2f(100.0f, 130.0f), NULL, Vector2f(80.0f, 130.0f));
     corpo.setTextura("Texturas/Dinos/tard.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
 
@@ -12,7 +12,7 @@ Jogador(g), pulo(700), vJog(0)
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(9, 9), Vector2u(9, 9));
 
     posInicial = Vector2f((corpo.getPosicao().x / 2.0f) + 70.0f, 710);
-    corpo.getCorpo()->setPosition(posInicial);
+    corpo = (posInicial);
 
 }
 
@@ -26,7 +26,7 @@ void Angrath::executar() {
     if(Keyboard::isKeyPressed(Keyboard::Numpad0) && ataquePronto) {
         atacando = true;
         totalT -= 0.5f;
-        hitbox->getCorpoGraf()->getCorpo()->setPosition(corpo.getPosicao().x + (100.0f * lado), corpo.getPosicao().y);
+        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * lado), corpo.getPosicao().y);
         ataquePronto = false;
         ladoAtaque = lado;
         
@@ -43,13 +43,10 @@ void Angrath::executar() {
     }
     
 
-    hitbox->getCorpoGraf()->getCorpo()->move((500.0f + vJog) * pGG->getDt() * ladoAtaque, 0.0f);
+    hitbox->getCorpoGraf()->mover((500.0f + vJog) * pGG->getDt() * ladoAtaque, 0.0f);
     if(atacando)
         hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(9, 9), 5, 0.1f);
 
-
-    if(corpo.getPosicao().y > 2000.0f)
-        morrer();
 
     mover();
 }
@@ -83,6 +80,6 @@ void Angrath::mover() {
         movimento.y += 20.0f;
     }
 
-    corpo.getCorpo()->move(movimento * dT);
+    corpo.mover(movimento * dT);
     animar(movimento);
 }

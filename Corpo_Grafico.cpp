@@ -13,10 +13,17 @@ Corpo_Grafico::~Corpo_Grafico() {
     delete textura;
 }
 
-void Corpo_Grafico::inicializa(Vector2f tam, Texture* tex) {
+void Corpo_Grafico::inicializa(Vector2f tam, Texture* tex, Vector2f margemHitbox) {
     corpo = new RectangleShape(tam);
     corpo->setOrigin(tam / 2.0f);
     corpo->setFillColor(Color::White);
+    
+    if(margemHitbox == Vector2f(0.0f, 0.0f))
+        margemHitbox = tam;
+    
+    hitbox = new RectangleShape(margemHitbox);
+    hitbox->setOrigin(margemHitbox / 2.0f);
+    hitbox->setPosition(corpo->getPosition());
 
     corpo->setTexture(tex);
 
