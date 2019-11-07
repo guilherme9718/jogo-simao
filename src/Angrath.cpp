@@ -3,7 +3,7 @@
 Angrath::Angrath(Gerenciador_Grafico* g):
 Jogador(g), pulo(700), vJog(0)
 {
-    vidas = 3;
+    vidas = 10;
     corpo.inicializa(Vector2f(100.0f, 130.0f), NULL);
     corpo.setTextura("Texturas/Dinos/tard.png");
     corpo.inicializaAnimadora(Vector2f(0.0f, -2.5f), Vector2u(4, 1), Vector2u(24, 1));
@@ -47,9 +47,6 @@ void Angrath::executar() {
     if(atacando)
         hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(9, 9), 5, 0.1f);
 
-
-    if(corpo.getPosicao().y > 2000.0f)
-        morrer();
 
     mover();
 }

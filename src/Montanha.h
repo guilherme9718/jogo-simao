@@ -16,7 +16,7 @@ public:
 
     void executar();
     //void gerenciar_colisoes();
-    
+
     void instanciaPlataformas();
     void instanciaInimigos(Plataforma* plat);
     void instanciaObstaculos(Plataforma* plat);
@@ -26,13 +26,8 @@ private:
 
     Colisora* colisora;
 
-    Andino* andi;
-    Carnivora* carn;
-
     RectangleShape fundo[5];
     Texture texturaFundo[5];
-
-    int i;
 
     unsigned short int contPlat;
     unsigned short int contInim;

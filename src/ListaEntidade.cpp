@@ -99,12 +99,13 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
                     {
                         j->setPontos(29);
                         excluir(itr);
+                        itr = aux;
                     }
                 }
             }
         }
         else{
-            j->morrer(j->getGerenciador()->getVisao()->getCenter());
+            j->morrer(Vector2f(j2->getPosicao().x, -1000));
         }
 
         if(colisora->atacando(itr->getAtual(), jog2, direcao))
@@ -127,7 +128,7 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
             }
         }
         else{
-            j2->morrer(j2->getGerenciador()->getVisao()->getCenter());
+            j2->morrer(Vector2f(j->getPosicao().x, -1000));
         }
                 itr = aux;
     }
@@ -157,8 +158,8 @@ void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade>* no) {
         else {
             no->getAnt()->setProx(NULL);
         }
-        //delete no->getAtual();
-        //delete no;
+        delete no->getAtual();
+        delete no;
     }
 }
 

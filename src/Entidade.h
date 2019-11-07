@@ -7,7 +7,7 @@
 
 class Plataforma;
 
-class Entidade : public Ent {
+class Entidade {
 public:
     Entidade(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Entidade();

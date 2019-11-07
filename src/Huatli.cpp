@@ -47,9 +47,6 @@ void Huatli::executar() {
         hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
 
 
-    if(corpo.getPosicao().y > 2000.0f)
-        morrer();
-
     mover();
 }
 

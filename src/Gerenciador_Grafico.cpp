@@ -45,6 +45,9 @@ void Gerenciador_Grafico::instanciaTexto() {
 
     texto.setCharacterSize(50);
     texto.setOutlineThickness(0.5);
+
+    texto.setFillColor(sf::Color::Green);
+    texto.setOutlineColor(sf::Color::Yellow);
 }
 
 void Gerenciador_Grafico::imprimePontuacao(int p, int v){

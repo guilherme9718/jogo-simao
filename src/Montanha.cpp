@@ -4,7 +4,7 @@
 Montanha::Montanha(Jogo* jooj):
 Fase(jooj)
 {
-    doisJogadores = true;
+    doisJogadores = false;
     srand(time(NULL));
     colisora = new Colisora();
 
@@ -21,7 +21,6 @@ Fase(jooj)
     }
 
     instanciaFundo();
-
 
     // Instanciar plataformas
     instanciaPlataformas();
@@ -41,17 +40,31 @@ Montanha::~Montanha() {
 
 void Montanha::executar() {
 
-    for (i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
         fundo[i].setPosition(pJogo->getGerenciador()->getVisao()->getCenter());
         pJogo->getGerenciador()->desenhar(&fundo[i]);
     }
 
     entidades.executar();
     entidades.imprimir();
+
     if(doisJogadores)
         entidades.colidir(jogador1, jogador2, colisora);
     else
         entidades.colidir(jogador1, colisora);
+
+    if(doisJogadores)
+    {
+        if(jogador1->getPosicao().y > 2000.0f)
+            jogador1->morrer(Vector2f(jogador2->getPosicao().x, -1000));
+        if(jogador2->getPosicao().y > 2000.0f)
+            jogador2->morrer(Vector2f(jogador1->getPosicao().x, -1000));
+    }
+
+    else if(jogador1->getPosicao().y > 2000.0f)
+        jogador1->morrer();
+
+    cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
 }
 
 void Montanha::instanciaPlataformas() {
@@ -63,8 +76,7 @@ void Montanha::instanciaPlataformas() {
 
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist(0,0);
-
+    std::uniform_int_distribution<std::mt19937::result_type> dist(0,2);
 
     if (!plats)
     {
@@ -98,6 +110,7 @@ void Montanha::instanciaPlataformas() {
         entidades.incluir(static_cast<Entidade*>(plat));
 
         int aleatorio = dist(rng);
+        aleatorio = rand()%2;
 
         if(tipo) {
             if(aleatorio == 0)
@@ -112,16 +125,31 @@ void Montanha::instanciaPlataformas() {
 }
 
 void Montanha::instanciaInimigos(Plataforma* plat) {
+
+    Andino* andi;
+    Carnivora* carn;
+
     andi = new Andino(plat);
     entidades.incluir(static_cast<Entidade*>(andi));
+
+    carn = new Carnivora(pJogo->getGerenciador());
+    carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x - 100.0f, plat->getPosicao().y - 70.0f));
+    entidades.incluir(static_cast<Entidade*>(carn));
+
+    carn = new Carnivora(pJogo->getGerenciador());
+    carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x + 100.0f, plat->getPosicao().y - 70.0f));
+    entidades.incluir(static_cast<Entidade*>(carn));
 }
 
 void Montanha::instanciaObstaculos(Plataforma* plat) {
+
+    Carnivora* carn;
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<uint32_t> distribuicao(0,1);
 
     int aleatorio = distribuicao(rng);
+    aleatorio = rand()%2;
 
     if(aleatorio) {
         carn = new Carnivora(pJogo->getGerenciador());

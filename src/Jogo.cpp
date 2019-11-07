@@ -5,16 +5,23 @@ Jogo::Jogo()
     montanha = new Montanha(this);
     j2 = montanha->getJogador2();
     srand(time(NULL));
-    doisJogadores = true;
+    doisJogadores = false;
+
+    //menuAtivo = true;
+
+    menu = new Menu(this);
 }
 
 Jogo::~Jogo() {
-
+    //delete menu;
+    //delete montanha;
 }
 
 void Jogo::executar() {
+
     while (GG.getAberto())
     {
+        //executaMenu();
         dT = clock.restart().asSeconds();
         if(dT > 1.0f / 20.0f)
             dT = 1.0f / 20.0f;
@@ -40,4 +47,12 @@ void Jogo::executar() {
 
         GG.getJanela()->display();
     }
+}
+
+void Jogo::executaMenu() {
+//    while(menuAtivo) {
+//        menu->executar();
+//        GG.leEventos();
+//        GG.getJanela()->display();
+//    }
 }
