@@ -21,7 +21,7 @@ void Jogador::morrer() {
     pontos -= 12;
     vidas--;
     if(vidas >= 0) {
-        corpo.getCorpo()->setPosition(posInicial);
+        corpo = (posInicial);
     }
 }
 
@@ -29,7 +29,7 @@ void Jogador::morrer(Vector2f pos) {
     pontos -= 12;
     vidas--;
     if(vidas >= 0) {
-        corpo.getCorpo()->setPosition(pos);
+        corpo = (pos);
     }
 }
 

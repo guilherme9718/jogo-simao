@@ -8,31 +8,33 @@
 #include "Carnivora.h"
 #include "Colisora.h"
 #include "Pedra.h"
+#include "Fundo.h"
+#include "Gerenciador_Grafico.h"
+#include "MontanhaEstado.h"
 
-class Montanha : public Fase {
+class Montanha : public Fase, public MontanhaEstado {
 public:
-    Montanha(Jogo* jooj = NULL);
+    Montanha(Jogo* jooAj = NULL);
     ~Montanha();
 
     void executar();
+    void pontuacao();
     //void gerenciar_colisoes();
-    
+
     void instanciaPlataformas();
     void instanciaInimigos(Plataforma* plat);
     void instanciaObstaculos(Plataforma* plat);
     void instanciaFundo();
+    
+    void setDoisJogadores(const bool dois) { doisJogadores = dois; }
 
 private:
 
     Colisora* colisora;
 
-    Andino* andi;
-    Carnivora* carn;
-
-    RectangleShape fundo[5];
-    Texture texturaFundo[5];
-
-    int i;
+    
+    Fundo fundo;
+    Gerenciador_Grafico* pGG;
 
     unsigned short int contPlat;
     unsigned short int contInim;

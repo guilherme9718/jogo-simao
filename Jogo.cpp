@@ -2,19 +2,33 @@
 
 Jogo::Jogo()
 {
-    montanha = new Montanha(this);
-    j2 = montanha->getJogador2();
+//    j1 = NULL;
+//    j2 = NULL;
+//    menu = NULL;
+//    estado = NULL;
+//    montanha = NULL;
+    
     srand(time(NULL));
-    doisJogadores = true;
+    doisJogadores = false;
+
+    menu = new MenuPrincipal(this);
+    //menuAtivo = true;
+    estado = reinterpret_cast<Estado*>(menu);
+    
 }
 
 Jogo::~Jogo() {
-
+    delete menu;
+    delete j1;
+    if(doisJogadores)
+        delete j2;
 }
 
 void Jogo::executar() {
+
     while (GG.getAberto())
     {
+        //executaMenu();
         dT = clock.restart().asSeconds();
         if(dT > 1.0f / 20.0f)
             dT = 1.0f / 20.0f;
@@ -24,13 +38,18 @@ void Jogo::executar() {
         GG.limpar();
         GG.leEventos();
 
-        montanha->executar();
+        estado->executar();
+
         
-        if(doisJogadores)
-            GG.getVisao()->setCenter(Vector2f((j1->getPosicao().x + j2->getPosicao().x) / 2.0f, 960.0f / 2.0f));
-        else
-        GG.getVisao()->setCenter(Vector2f(j1->getPosicao().x + 1280.0f / 4.0f, 960.0f / 2.0f));
-        GG.imprimePontuacao(j1->getPontos());
+
         GG.getJanela()->display();
     }
+}
+
+void Jogo::executaMenu() {
+//    while(menuAtivo) {
+//        menu->executar();
+//        GG.leEventos();
+//        GG.getJanela()->display();
+//    }
 }

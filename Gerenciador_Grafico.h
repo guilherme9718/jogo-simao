@@ -14,15 +14,16 @@ public:
     View* getVisao () { return &visao; }
 
     void instanciaTexto();
-    void imprimePontuacao(int pontos);
-    
+    void imprimePontuacao(int p, int v);
+    void imprimePontuacao(int p, int v, int p2, int v2);
+
     void setDt(float delta) {dT = delta;}
     const float getDt () const {return dT;}
 private:
     RenderWindow janela;
     View visao;
     float dT;
-    
+
     float AJ;
     float LJ;
     float LP;
@@ -30,7 +31,7 @@ private:
 
     Font fonte;
     Text texto;
-    
+
 };
 
 
