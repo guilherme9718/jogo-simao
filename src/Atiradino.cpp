@@ -39,7 +39,7 @@ void Atiradino::executar()
 {
     totalT += pGG->getDt();
 
-    if(ataquePronto) {
+    if(ataquePronto && rand()%200 == 0) {
         //cout << "a";
         atacando = true;
         totalT -= 0.5f;

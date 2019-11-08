@@ -4,7 +4,7 @@
 Montanha::Montanha(Jogo* jooj):
 Fase(jooj)
 {
-    doisJogadores = true;
+    doisJogadores = false;
     srand(time(NULL));
     colisora = new Colisora();
 
@@ -64,7 +64,7 @@ void Montanha::executar() {
     else if(jogador1->getPosicao().y > 2000.0f)
         jogador1->morrer();
 
-    //cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
+    cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
 }
 
 void Montanha::instanciaPlataformas() {
@@ -103,6 +103,8 @@ void Montanha::instanciaPlataformas() {
         plats >> pos.x >> pos.y;
         plats >> tipo;
 
+        tipo = 0;
+
         plat = new Plataforma(tam);
         plat->setGerenciador(pJogo->getGerenciador());
         plat->getCorpoGraf()->setPosicao(pos);
@@ -137,10 +139,13 @@ void Montanha::instanciaInimigos(Plataforma* plat) {
     std::uniform_int_distribution<uint32_t> distribuicao(0,1);
 
     int aleatorio = distribuicao(rng);
-    aleatorio = 1;
+    aleatorio = rand()%2;
 
     if(aleatorio == 0)
     {
+        andi = new Andino(plat);
+        entidades.incluir(static_cast<Entidade*>(andi));
+
         andi = new Andino(plat);
         entidades.incluir(static_cast<Entidade*>(andi));
     }
@@ -150,6 +155,9 @@ void Montanha::instanciaInimigos(Plataforma* plat) {
         atr = new Atiradino(plat);
         entidades.incluir(static_cast<Entidade*>(atr));
         entidades.incluir(static_cast<Entidade*>(atr->getProjetil()));
+
+        andi = new Andino(plat);
+        entidades.incluir(static_cast<Entidade*>(andi));
     }
 
 }
@@ -202,6 +210,10 @@ void Montanha::instanciaObstaculos(Plataforma* plat) {
     {
         pedra = new Pedra(plat);
         entidades.incluir(static_cast<Entidade*>(pedra));
+
+        carn = new Carnivora(pJogo->getGerenciador());
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 100.0f , plat->getPosicao().y - 70.0f));
+        entidades.incluir(static_cast<Entidade*>(carn));
     }
 }
 
