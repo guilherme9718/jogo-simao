@@ -8,7 +8,6 @@ public:
     virtual ~Personagem();
 
     virtual void imprimir();
-    //virtual void Colidindo(Vector2f direcao);
     virtual void executar();
 
     virtual void animar(Vector2f movimento);
@@ -21,8 +20,6 @@ protected:
 
     bool aDireita;
     short int lado;
-
-
 
 };
 

@@ -27,6 +27,8 @@ public:
     void setJogador2 (Angrath* jogador2) { j2 = jogador2; }
     
     void setMenuAtivo(bool ativo) { menuAtivo = ativo; }
+    
+    bool getDoisJogadores() { return doisJogadores; }
 private:
     Huatli* j1;
     Angrath* j2;

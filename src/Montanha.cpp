@@ -4,7 +4,7 @@
 Montanha::Montanha(Jogo* jooj):
 Fase(jooj)
 {
-    doisJogadores = false;
+    doisJogadores = true;
     srand(time(NULL));
     colisora = new Colisora();
 
@@ -64,14 +64,13 @@ void Montanha::executar() {
     else if(jogador1->getPosicao().y > 2000.0f)
         jogador1->morrer();
 
-    cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
+    //cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
 }
 
 void Montanha::instanciaPlataformas() {
     ifstream plats ("Arquivos/Plataformas.txt", ios::in);
     Vector2f pos, tam;
     Plataforma* plat;
-    float aux, aux2;
     int tipo;
 
     std::random_device dev;
@@ -93,7 +92,7 @@ void Montanha::instanciaPlataformas() {
 
     plat = new Plataforma(tam);
     plat->setGerenciador(pJogo->getGerenciador());
-    plat->getCorpoGraf()->getCorpo()->setPosition(pos);
+    plat->getCorpoGraf()->setPosicao(pos);
     entidades.incluir(static_cast<Entidade*>(plat));
 
     //Instancia as outras plataformas
@@ -106,17 +105,21 @@ void Montanha::instanciaPlataformas() {
 
         plat = new Plataforma(tam);
         plat->setGerenciador(pJogo->getGerenciador());
-        plat->getCorpoGraf()->getCorpo()->setPosition(pos);
+        plat->getCorpoGraf()->setPosicao(pos);
         entidades.incluir(static_cast<Entidade*>(plat));
 
         int aleatorio = dist(rng);
-        aleatorio = rand()%2;
+        aleatorio = rand()%3;
 
         if(tipo) {
-            if(aleatorio == 0)
+            if(aleatorio == 0) {
                 instanciaInimigos(plat);
+                instanciaObstaculos(plat);
+            }
             else if (aleatorio == 1)
                 instanciaObstaculos(plat);
+            else if (aleatorio == 2)
+                instanciaInimigos(plat);
         }
 
     }
@@ -127,60 +130,78 @@ void Montanha::instanciaPlataformas() {
 void Montanha::instanciaInimigos(Plataforma* plat) {
 
     Andino* andi;
-    Carnivora* carn;
+    Atiradino* atr;
 
-    andi = new Andino(plat);
-    entidades.incluir(static_cast<Entidade*>(andi));
-
-    carn = new Carnivora(pJogo->getGerenciador());
-    carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x - 100.0f, plat->getPosicao().y - 70.0f));
-    entidades.incluir(static_cast<Entidade*>(carn));
-
-    carn = new Carnivora(pJogo->getGerenciador());
-    carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x + 100.0f, plat->getPosicao().y - 70.0f));
-    entidades.incluir(static_cast<Entidade*>(carn));
-}
-
-void Montanha::instanciaObstaculos(Plataforma* plat) {
-
-    Carnivora* carn;
     std::random_device dev;
     std::mt19937 rng(dev());
     std::uniform_int_distribution<uint32_t> distribuicao(0,1);
 
     int aleatorio = distribuicao(rng);
-    aleatorio = rand()%2;
+    aleatorio = 1;
 
-    if(aleatorio) {
+    if(aleatorio == 0)
+    {
+        andi = new Andino(plat);
+        entidades.incluir(static_cast<Entidade*>(andi));
+    }
+
+    else if(aleatorio == 1)
+    {
+        atr = new Atiradino(plat);
+        entidades.incluir(static_cast<Entidade*>(atr));
+        entidades.incluir(static_cast<Entidade*>(atr->getProjetil()));
+    }
+
+}
+
+void Montanha::instanciaObstaculos(Plataforma* plat) {
+
+    Carnivora* carn;
+    Pedra* pedra;
+
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<uint32_t> distribuicao(0,1);
+
+    int aleatorio = distribuicao(rng);
+    aleatorio = rand()%3;
+
+    if(aleatorio == 0) {
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x - 200.0f, plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 200.0f, plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
 
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x + 200.0f, plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 200.0f, plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
 
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x, plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x, plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
     }
 
-    else {
+    else if (aleatorio == 1) {
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x - 110.0f, plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 110.0f, plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
 
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x - 40.0f, plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x - 40.0f, plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
 
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x + 30.0f , plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 30.0f , plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
 
         carn = new Carnivora(pJogo->getGerenciador());
-        carn->getCorpoGraf()->getCorpo()->setPosition(Vector2f(plat->getPosicao().x + 100.0f , plat->getPosicao().y - 70.0f));
+        carn->getCorpoGraf()->setPosicao(Vector2f(plat->getPosicao().x + 100.0f , plat->getPosicao().y - 70.0f));
         entidades.incluir(static_cast<Entidade*>(carn));
+    }
+
+    else if (aleatorio == 2)
+    {
+        pedra = new Pedra(plat);
+        entidades.incluir(static_cast<Entidade*>(pedra));
     }
 }
 

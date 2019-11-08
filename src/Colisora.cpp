@@ -3,19 +3,19 @@
 #include "Entidade.h"
 
 Colisora::Colisora() {
-    
+
 }
 
 Colisora::~Colisora() {
 }
 
 bool Colisora::verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& direcao, float f) {
-    
-    Vector2f pos2 = c2->getCorpo()->getPosition();
-    Vector2f med2 = c2->getCorpo()->getSize() / 2.0f;
 
-    Vector2f pos = c1->getCorpo()->getPosition();
-    Vector2f met = c1->getCorpo()->getSize() / 2.0f;
+    Vector2f pos2 = c2->getHitbox()->getPosition();
+    Vector2f med2 = c2->getHitbox()->getSize() / 2.0f;
+
+    Vector2f pos = c1->getHitbox()->getPosition();
+    Vector2f met = c1->getHitbox()->getSize() / 2.0f;
 
     float deltaX = pos2.x - pos.x;
     float deltaY = pos2.y - pos.y;
@@ -31,16 +31,16 @@ bool Colisora::verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& 
         {
             if(deltaX > 0)
             {
-                c1->getCorpo()->move(interX * (1 - f), 0);
-                c2->getCorpo()->move(-interX * f,0);
+                c1->mover(interX * (1 - f), 0);
+                c2->mover(-interX * f,0);
 
                 direcao.x = 1;
                 direcao.y = 0;
             }
             if(deltaX < 0)
             {
-                c1->getCorpo()->move(-interX * (1 - f), 0);
-                c2->getCorpo()->move(interX * f, 0);
+                c1->mover(-interX * (1 - f), 0);
+                c2->mover(interX * f, 0);
 
                 direcao.x = -1;
                 direcao.y = 0;
@@ -50,16 +50,16 @@ bool Colisora::verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& 
         {
             if(deltaY > 0)
             {
-                c1->getCorpo()->move(0, interY * (1 - f));
-                c2->getCorpo()->move(0, -interY * f);
+                c1->mover(0, interY * (1 - f));
+                c2->mover(0, -interY * f);
 
                 direcao.x = 0;
                 direcao.y = 1;
             }
             if(deltaY < 0)
             {
-                c1->getCorpo()->move(0, -interY * (1 - f));
-                c2->getCorpo()->move(0, interY * f);
+                c1->mover(0, -interY * (1 - f));
+                c2->mover(0, interY * f);
 
                 direcao.x = 0;
                 direcao.y = -1;
@@ -68,8 +68,8 @@ bool Colisora::verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& 
 
         return true;
     }
-    
-    
+
+
 
     return false;
 }
@@ -94,25 +94,25 @@ void Colisora::colidindo(Entidade* e1, Vector2f direcao)
     }
 }
 
-// E1 = quem chama, E2 = jogador; 
+// E1 = quem chama, E2 = jogador;
 
 
 bool Colisora::atacando(Entidade* e1, Entidade* e2, Vector2f& direcao) {
     if(e1->getPodeMatar())
         if(verificarColisao(e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao()))
             return false;
-    
+
     return true;
 }
 bool Colisora::colidir(Entidade* e1, Entidade* e2, Vector2f& direcao) {
     if(verificarColisao(e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao()))
         colidindo(e2, direcao);
-        
+
 }
 bool Colisora::ataque(Entidade* e1, Entidade* e2, Vector2f& direcao) {
     if(e1->getPodeMorrer())
         if( verificarColisao( e1->getCorpoGraf(), e2->getCorpoGraf(), direcao, e1->getEmpurrao() ) )
             return true;
-    
+
     return false;
 }

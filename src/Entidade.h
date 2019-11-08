@@ -16,7 +16,6 @@ public:
     virtual void mover() {}
     virtual void imprimir();
 
-
     //Sets e gets
 
     Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
@@ -42,8 +41,11 @@ public:
     void setVidas(int v) { vidas = v; }
 
     bool tomarDano();
-    
+
     Gerenciador_Grafico* getGerenciador() { return pGG; }
+
+    bool getMorto() { return morto; }
+    void setMorto() { morto = true; }
 
 protected:
     Corpo_Grafico corpo;
@@ -59,7 +61,7 @@ protected:
     bool podeMatar;
     bool podeMorrer;
     float empurrao;
-    
+
     bool morto;
 };
 

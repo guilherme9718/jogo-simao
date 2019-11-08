@@ -7,11 +7,12 @@ public:
     Inimigo(Gerenciador_Grafico* g = NULL);
     virtual ~Inimigo();
 
-    void executar();
+    virtual void executar();
     virtual void imprimir();
 
 protected:
-
+    Vector3f fronteira;
+    float posicaoInicial;
 };
 
 

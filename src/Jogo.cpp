@@ -5,7 +5,7 @@ Jogo::Jogo()
     montanha = new Montanha(this);
     j2 = montanha->getJogador2();
     srand(time(NULL));
-    doisJogadores = false;
+    doisJogadores = true;
 
     //menuAtivo = true;
 

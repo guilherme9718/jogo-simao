@@ -27,25 +27,6 @@ void Personagem::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
 
-//void Personagem::Colidindo(Vector2f direcao) {
-//    if(direcao.x < 0) //Colidindo na esquerda
-//        movimento.x = 0;
-//
-//    else if(direcao.x > 0) //Colidindo na direita
-//        movimento.x = 0;
-//
-//    if(direcao.y > 0) //Colidindo em cima
-//    {
-//        movimento.y = 0;
-//    }
-//
-//    else if(direcao.y < 0) //Colidindo em baixo
-//    {
-//        movimento.y = 0;
-//        noChao = true;
-//    }
-//}
-
 void Personagem::animar(Vector2f movimento) {
     Vector2u animacao(0, 4);
     float tempoTrocaAnimacao = 0.3f;

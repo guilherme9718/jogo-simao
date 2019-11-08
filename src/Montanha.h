@@ -5,13 +5,14 @@
 #include "Jogador.h"
 #include "Huatli.h"
 #include "Andino.h"
+#include "Atiradino.h"
 #include "Carnivora.h"
 #include "Colisora.h"
 #include "Pedra.h"
 
 class Montanha : public Fase {
 public:
-    Montanha(Jogo* jooj = NULL);
+    Montanha(Jogo* jooAj = NULL);
     ~Montanha();
 
     void executar();
