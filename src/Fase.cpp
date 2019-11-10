@@ -1,10 +1,10 @@
 #include "Fase.h"
 #include "Jogo.h"
 
-Fase::Fase(Jogo* jooj):
+Fase::Fase(Jogo* jooj, bool dois):
 Ent(), jogador1(NULL), jogador2(NULL)
 {
-    doisJogadores = false;
+    doisJogadores = dois;
     pJogo = jooj;
 }
 

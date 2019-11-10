@@ -9,6 +9,7 @@ Personagem(g)
     empurrao = 1.0f;
 
     noChao = true;
+    aDireita = false;
 }
 
 Inimigo::~Inimigo() {
@@ -22,16 +23,3 @@ void Inimigo::executar()
 void Inimigo::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
-
-//bool Inimigo::verificarAtacando(Colisora* outro, Vector2f& direcao)
-//{
-//    if(corpo.getColisora()->verificarColisao(plat->getColisora(), direcao, 0.0f)) {
-//        noChao = true;
-//        Colidindo(direcao);
-//    }
-//
-//    if(verificarColisao(outro, direcao))
-//        return false;
-//    else
-//        return true;
-//}

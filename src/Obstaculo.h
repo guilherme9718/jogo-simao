@@ -7,8 +7,6 @@ public:
     Obstaculo(Gerenciador_Grafico* g);
     virtual ~Obstaculo();
 
-    void Colidindo(Vector2f direcao) {} ;
-
 protected:
 
 };

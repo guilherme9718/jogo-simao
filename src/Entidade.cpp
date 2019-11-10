@@ -1,9 +1,12 @@
 #include "Entidade.h"
 #include "Plataforma.h"
+#include "Projetil.h"
 
 Entidade::Entidade(Gerenciador_Grafico* gerenciador):
 podeMatar(true), podeMorrer(true), empurrao(1.0f), movimento(0.0f, 0.0f), noChao(true), morto(false)
 {
+    //contId++;
+    //id = contId;
     vidas = 10;
     plat = NULL;
     pGG = gerenciador;

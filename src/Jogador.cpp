@@ -1,8 +1,9 @@
 #include "Jogador.h"
 
 Jogador::Jogador(Gerenciador_Grafico* gerenciador):
-Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000)
+Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000), pulo(700), vJog(0)
 {
+    hitbox = NULL;
     vidas = 10;
     lado = 1;
     aDireita = true;
@@ -21,7 +22,7 @@ void Jogador::morrer() {
     pontos -= 12;
     vidas--;
     if(vidas >= 0) {
-        corpo.getCorpo()->setPosition(posInicial);
+        corpo = (posInicial);
     }
 }
 
@@ -29,7 +30,7 @@ void Jogador::morrer(Vector2f pos) {
     pontos -= 12;
     vidas--;
     if(vidas >= 0) {
-        corpo.getCorpo()->setPosition(pos);
+        corpo = (pos);
     }
 }
 

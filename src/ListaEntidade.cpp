@@ -38,28 +38,32 @@ void ListaEntidade::colidir(Jogador* j, Colisora* colisora) {
     // 0 empurra
     // 1 n�o empurra
 
+
+
     while(itr)
     {
         aux = itr->getProx();
 
+        if(itr->getAtual()->getMorto())
+        {
+            excluir(itr);
+            itr = aux;
+        }
+
         if(colisora->atacando(itr->getAtual(), jog, direcao))
         {
-            if(itr->getAtual()->getPlataforma())
+            if(itr->getAtual()->getPlataforma()) {
                 colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
-
+            }
             colisora->colidir(itr->getAtual(), jog, direcao);
             if(j->getAtacando())
-            {
-
-            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
-                {
+                if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
                     if(itr->getAtual()->tomarDano())
                     {
                         j->setPontos(29);
                         excluir(itr);
                     }
-                }
-            }
+
             itr = aux;
         }
         else{
@@ -84,26 +88,30 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
     {
         aux = itr->getProx();
 
+        if(itr->getAtual()->getMorto())
+        {
+            excluir(itr);
+            itr = aux;
+        }
+
         if(colisora->atacando(itr->getAtual(), jog, direcao))
         {
             if(itr->getAtual()->getPlataforma())
+            {
                 colisora->colidir(reinterpret_cast<Entidade*>(itr->getAtual()->getPlataforma()),itr->getAtual(), direcao);
+            }
 
             colisora->colidir(itr->getAtual(), jog, direcao);
             if(j->getAtacando())
-            {
-
-            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
-                {
+                if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j->getProjetil()), direcao))
                     if(itr->getAtual()->tomarDano())
                     {
                         j->setPontos(29);
                         excluir(itr);
                         itr = aux;
                     }
-                }
-            }
         }
+
         else{
             j->morrer(Vector2f(j2->getPosicao().x, -1000));
         }
@@ -115,17 +123,12 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
 
             colisora->colidir(itr->getAtual(), jog2, direcao);
             if(j2->getAtacando())
-            {
-
-            if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j2->getProjetil()), direcao))
-                {
+                if(colisora->ataque(itr->getAtual(), static_cast<Entidade*>(j2->getProjetil()), direcao))
                     if(itr->getAtual()->tomarDano())
                     {
                         j2->setPontos(29);
                         excluir(itr);
                     }
-                }
-            }
         }
         else{
             j2->morrer(Vector2f(j->getPosicao().x, -1000));

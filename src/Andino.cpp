@@ -24,7 +24,7 @@ Inimigo(plataforma->getGerenciador())
     if(rand() % 2)
         lado = 1;
 
-    corpo.getCorpo()->setPosition(Vector2f (posicaoInicial, fronteira.z));
+    corpo = Vector2f(posicaoInicial, fronteira.z);
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
 }
@@ -58,10 +58,6 @@ void Andino::mover() {
         totalT -= tempoTroca;
     }
 
-    corpo.getCorpo()->move(movimento * dT);
+    corpo.mover(movimento * dT);
     animar(movimento);
 }
-
-/*void Andino::morrer() {
-    morto = true;
-}*/

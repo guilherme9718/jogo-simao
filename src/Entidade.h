@@ -16,8 +16,9 @@ public:
     virtual void mover() {}
     virtual void imprimir();
 
-
     //Sets e gets
+
+    //int getId() { return id; }
 
     Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
     Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
@@ -42,10 +43,17 @@ public:
     void setVidas(int v) { vidas = v; }
 
     bool tomarDano();
-    
+
     Gerenciador_Grafico* getGerenciador() { return pGG; }
 
+    bool getMorto() { return morto; }
+    void setMorto() { morto = true; }
+
 protected:
+    int id;
+
+    static int contId;
+
     Corpo_Grafico corpo;
     Gerenciador_Grafico *pGG;
     Plataforma* plat;
@@ -59,8 +67,9 @@ protected:
     bool podeMatar;
     bool podeMorrer;
     float empurrao;
-    
+
     bool morto;
 };
 
 
+//int Entidade::contId = 0;

@@ -11,7 +11,7 @@ class Jogo;
 
 class Fase : public Ent {
 public:
-    Fase(Jogo* jooj = NULL);
+    Fase(Jogo* jooj = NULL, bool dois = false);
     virtual ~Fase();
 
     virtual void executar();
@@ -29,8 +29,13 @@ protected:
     Jogo* pJogo;
     Huatli* jogador1;
     Angrath* jogador2;
-    
+
     bool doisJogadores;
+
+    unsigned short int contPlat;
+    unsigned short int contInim;
+    unsigned short int contObs;
+    unsigned short int contJog;
 
 };
 

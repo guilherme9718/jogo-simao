@@ -11,14 +11,12 @@ public:
 
     void mover();
     //void morrer();
-    
-    void randomiza() { 
+
+    void randomiza() {
         srand(time(NULL));
-        
+
     }
 private:
-    Vector3f fronteira;
     float pulo;
-    float posicaoInicial;
 };
 

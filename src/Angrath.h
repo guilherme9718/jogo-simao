@@ -11,8 +11,5 @@ public:
     void executar();
 
 private:
-
-    float pulo;
-    float vJog;
 };
 
