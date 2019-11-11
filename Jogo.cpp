@@ -2,17 +2,20 @@
 
 Jogo::Jogo()
 {
-    montanha = new Montanha(this);
-    j2 = montanha->getJogador2();
     srand(time(NULL));
-    doisJogadores = true;
+    
+    estados.push(reinterpret_cast<Estado*>(new MenuPrincipal(this)));
+
 }
 
 Jogo::~Jogo() {
-
 }
 
 void Jogo::executar() {
+
+    float dT;
+    Clock clock;
+
     while (GG.getAberto())
     {
         dT = clock.restart().asSeconds();
@@ -24,13 +27,24 @@ void Jogo::executar() {
         GG.limpar();
         GG.leEventos();
 
-        montanha->executar();
+        if(not estados.empty())
+            estados.top()->executar();
+        else {
+            GG.getJanela()->close();
+        }
         
-        if(doisJogadores)
-            GG.getVisao()->setCenter(Vector2f((j1->getPosicao().x + j2->getPosicao().x) / 2.0f, 960.0f / 2.0f));
-        else
-        GG.getVisao()->setCenter(Vector2f(j1->getPosicao().x + 1280.0f / 4.0f, 960.0f / 2.0f));
-        GG.imprimePontuacao(j1->getPontos());
+        if(not lixo.empty()) {
+            delete lixo.top();
+            lixo.pop();
+        }
+
         GG.getJanela()->display();
+    }
+}
+
+void Jogo::tirarEstado() {
+    if(!estados.empty()) { 
+        lixo.push(estados.top());
+        estados.pop();
     }
 }

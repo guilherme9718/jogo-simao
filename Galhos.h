@@ -1,11 +1,13 @@
 #pragma once
 #include "stdafx.h"
 #include "Obstaculo.h"
+#include "Plataforma.h"
 
 class Galhos : public Obstaculo {
 public:
-    Galhos(Gerenciador_Grafico* g);
+    Galhos(Plataforma* plataforma = NULL);
     ~Galhos();
+    
 private:
 
 };

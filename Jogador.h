@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "Personagem.h"
-#include "Inimigo.h"
 #include "Projetil.h"
 
 class Jogador : public Personagem {
@@ -11,7 +10,6 @@ public:
 
     void morrer();
     void morrer(Vector2f pos);
-    bool atacar(Inimigo* inim);
 
     void imprimir();
 
@@ -19,12 +17,13 @@ public:
 
     //Sets e Gets
 
+    void setAtacando(const bool atac) { atacando = atac; }
     const bool getAtacando() const { return atacando; }
     Corpo_Grafico* getHitbox() { return hitbox->getCorpoGraf(); }
-    
+
     Projetil* getProjetil() { return hitbox; }
-    
-    void setPontos (const int p) { pontos += p; }
+
+    void setPontos (const int p) { pontos = p; }
     int getPontos() const { return pontos; }
 
 protected:
@@ -34,6 +33,8 @@ protected:
     short ladoAtaque;
 
     int pontos;
+    float pulo;
+    float vJog;
 };
 
 

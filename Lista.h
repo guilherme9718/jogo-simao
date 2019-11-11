@@ -60,7 +60,6 @@ Lista<TL>::Lista() {
 
 template <class TL>
 Lista<TL>::~Lista() {
-    limpar();
 }
 
 template <class TL>
@@ -84,12 +83,12 @@ void Lista<TL>::limpar() {
     Elemento<TL> *itr = pPrimeiro, *aux = NULL;
 
     while(itr) {
+
         aux = itr->getProx();
         delete itr->getAtual();
         delete itr;
         itr = aux;
     }
-    tamanho = 0;
 }
 
 

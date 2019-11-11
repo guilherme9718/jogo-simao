@@ -7,7 +7,6 @@ public:
     Carnivora(Gerenciador_Grafico* g);
     ~Carnivora();
 
-    void executar();
 private:
 
 };

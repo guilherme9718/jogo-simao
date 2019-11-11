@@ -1,10 +1,11 @@
 #include "Fase.h"
 #include "Jogo.h"
+#include "MenuPause.h"
 
-Fase::Fase(Jogo* jooj):
-Ent()
+Fase::Fase(Jogo* jooj, bool dois):
+Ent(), jogador1(NULL), jogador2(NULL)
 {
-    doisJogadores = false;
+    doisJogadores = dois;
     pJogo = jooj;
 }
 
@@ -22,3 +23,8 @@ void Fase::reiniciar() {
 
 }
 
+void Fase::menuPause() {
+    if(Keyboard::isKeyPressed(Keyboard::Escape)) {
+        pJogo->colocarEstado( reinterpret_cast<Estado*>(new MenuPause(pJogo)) );
+    }
+}

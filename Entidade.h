@@ -7,7 +7,7 @@
 
 class Plataforma;
 
-class Entidade : public Ent {
+class Entidade {
 public:
     Entidade(Gerenciador_Grafico* gerenciador = NULL);
     virtual ~Entidade();
@@ -16,10 +16,12 @@ public:
     virtual void mover() {}
     virtual void imprimir();
 
-
     //Sets e gets
 
+    int getId() { return id; }
+
     Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
+    void setPosicao(const Vector2f pos) { corpo = pos; }
     Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
     Corpo_Grafico* getCorpoGraf() { return &corpo; }
 
@@ -41,11 +43,18 @@ public:
     int getVidas() { return vidas; }
     void setVidas(int v) { vidas = v; }
 
-    bool tomarDano();
-    
+    virtual bool tomarDano();
+
     Gerenciador_Grafico* getGerenciador() { return pGG; }
 
+    bool getMorto() { return morto; }
+    void setMorto() { morto = true; }
+
 protected:
+    int id;
+
+    static int contIdEntidade;
+
     Corpo_Grafico corpo;
     Gerenciador_Grafico *pGG;
     Plataforma* plat;
@@ -59,8 +68,6 @@ protected:
     bool podeMatar;
     bool podeMorrer;
     float empurrao;
-    
+
     bool morto;
 };
-
-

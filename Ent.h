@@ -6,8 +6,8 @@ public:
     Ent();
     virtual ~Ent();
     
-    int getId () const { return id; }
+    
+    //virtual void executar() { };
 protected:
-    int id;
-    static int cont;
+
 };

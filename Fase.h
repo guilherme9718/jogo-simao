@@ -11,12 +11,13 @@ class Jogo;
 
 class Fase : public Ent {
 public:
-    Fase(Jogo* jooj = NULL);
+    Fase(Jogo* jooj = NULL, bool dois = false);
     virtual ~Fase();
 
     virtual void executar();
     virtual void gerenciar_colisoes();
     virtual void reiniciar();
+    void menuPause();
 
     //Sets e Gets
     Huatli* getJogador1() { return jogador1; }
@@ -29,8 +30,13 @@ protected:
     Jogo* pJogo;
     Huatli* jogador1;
     Angrath* jogador2;
-    
+
     bool doisJogadores;
+
+    unsigned short int contPlat;
+    unsigned short int contInim;
+    unsigned short int contObs;
+    unsigned short int contJog;
 
 };
 

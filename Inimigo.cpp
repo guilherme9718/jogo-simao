@@ -9,6 +9,9 @@ Personagem(g)
     empurrao = 1.0f;
 
     noChao = true;
+    aDireita = false;
+    
+    danoT = 0.0f;
 }
 
 Inimigo::~Inimigo() {
@@ -16,22 +19,33 @@ Inimigo::~Inimigo() {
 
 void Inimigo::executar()
 {
-    mover();
+    if(tomaDano == false) {
+        danoT += pGG->getDt();
+        if(danoT >= 0.5f) {
+            danoT -= 0.5f;
+            tomaDano = true;
+            ferido = false;
+        }
+    }
+    
+    if(not ferido)
+        mover();
+    animar(movimento);
 }
 
 void Inimigo::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
 
-//bool Inimigo::verificarAtacando(Colisora* outro, Vector2f& direcao)
-//{
-//    if(corpo.getColisora()->verificarColisao(plat->getColisora(), direcao, 0.0f)) {
-//        noChao = true;
-//        Colidindo(direcao);
-//    }
-//
-//    if(verificarColisao(outro, direcao))
-//        return false;
-//    else
-//        return true;
-//}
+bool Inimigo::tomarDano() {
+    if(tomaDano) {
+        vidas--;
+        ferido = true;
+        tomaDano = false;
+        if(vidas < 0)
+            return true;
+    }
+    
+    
+    return false;
+}
