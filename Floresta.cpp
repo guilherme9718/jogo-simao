@@ -1,13 +1,16 @@
 #include "Floresta.h"
 #include "Jogo.h"
 
+using namespace Fases;
+
 Floresta::Floresta(Jogo* jooj, bool dois, Huatli* j1, Angrath* j2):
 Fase(jooj, dois), fundo(2, pJogo->getGerenciador())
 {
+    id = 1;
     pGG = pJogo->getGerenciador();
     srand(time(NULL));
     colisora = new Colisora();
-
+    
     //Instanciar jogador
     jogador1 = new Huatli(pGG);
     jogador1->setVidas(j1->getVidas());
@@ -37,6 +40,38 @@ Fase(jooj, dois), fundo(2, pJogo->getGerenciador())
 
 }
 
+Floresta::Floresta(Jogo* jooj, bool dois, string salvo):
+Fase(jooj, dois), fundo(2, pJogo->getGerenciador())
+{
+    id = 0;
+    pGG = pJogo->getGerenciador();
+    srand(time(NULL));
+    colisora = new Colisora();
+    jogador2 = NULL;
+    jogador1 = NULL;
+    instanciaFundo();
+    
+    if(salvo == "") {
+        //Instanciar jogador
+
+        jogador1 = new Huatli(pJogo->getGerenciador());
+        entidades.incluir(static_cast<Entidade*>(jogador1));
+
+        if(doisJogadores) {
+            jogador2 = new Angrath(pJogo->getGerenciador());
+            entidades.incluir(static_cast<Entidade*>(jogador2));
+        }
+
+        // Instanciar plataformas
+        instanciaPlataformas();
+    }
+    else {
+        //Carregar jogo Salvo
+        carregar(salvo, 1);
+    }
+
+}
+
 Floresta::~Floresta() {
 
 }
@@ -63,10 +98,11 @@ void Floresta::executar() {
         if(jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer();
     }
+    
+    reiniciar();
 
     pontuacao();
 
-    //cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
 }
 
 void Floresta::instanciaPlataformas() {
@@ -83,7 +119,7 @@ void Floresta::instanciaPlataformas() {
 
     if (!plats)
     {
-        cout << "a";
+        cerr << "Erro ao carregar o arquivo de Plataformas";
     }
 
     plats >> contPlat;
@@ -127,6 +163,8 @@ void Floresta::instanciaPlataformas() {
         else if(tipo == 3)
         {
             chefe = new ChefeDino(plat);
+            int numJog = (int)doisJogadores + 1;
+            chefe->setVidas(numJog * 4);
             entidades.incluir(static_cast<Entidade*>(chefe));
             entidades.incluir(static_cast<Entidade*>(chefe->getProjetil()));
         }
@@ -177,7 +215,7 @@ void Floresta::instanciaObstaculos(Plataforma* plat) {
     std::uniform_int_distribution<uint32_t> distribuicao(0,1);
 
     int aleatorio = distribuicao(rng);
-    aleatorio = 3;
+    aleatorio = rand() % 4;
 
     if(aleatorio == 0) {
         carn = new Carnivora(pJogo->getGerenciador());

@@ -3,12 +3,17 @@
 #include "Obstaculo.h"
 #include "Plataforma.h"
 
-class Galhos : public Obstaculo {
-public:
-    Galhos(Plataforma* plataforma = NULL);
-    ~Galhos();
-    
-private:
+using namespace Auxiliares;
+using namespace Obstaculos;
 
-};
+namespace Obstaculos {
+    class Galhos : public Obstaculo {
+    public:
+        Galhos(Plataforma* plataforma = NULL);
+        ~Galhos();
+
+    private:
+
+    };
+}
 

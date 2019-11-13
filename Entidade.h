@@ -5,69 +5,86 @@
 #include "Corpo_Grafico.h"
 #include "Colisora.h"
 
-class Plataforma;
+namespace Auxiliares {
+    class Plataforma;
+}
 
-class Entidade {
-public:
-    Entidade(Gerenciador_Grafico* gerenciador = NULL);
-    virtual ~Entidade();
+using namespace Auxiliares;
+using namespace Controladoras;
+using namespace GerenciadoresEntidades;
+using namespace GerenciadoresFases;
 
-    virtual void executar() = 0;
-    virtual void mover() {}
-    virtual void imprimir();
 
-    //Sets e gets
 
-    int getId() { return id; }
+namespace Abstratas {
+    class Entidade {
+    public:
+        Entidade(Gerenciador_Grafico* gerenciador = NULL);
+        virtual ~Entidade();
 
-    Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
-    void setPosicao(const Vector2f pos) { corpo = pos; }
-    Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
-    Corpo_Grafico* getCorpoGraf() { return &corpo; }
+        virtual void executar() = 0;
+        virtual void mover() {}
+        virtual void imprimir();
 
-    Plataforma* getPlataforma() { return plat; }
-    void setPlataforma(Plataforma* p) { plat  = p; }
+        //Sets e gets
 
-    void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
+        int getId() { return id; }
 
-    void setMovimento(Vector2f mov) { movimento = mov; }
-    Vector2f getMovimento() { return movimento; }
+        Vector2f getPosicao() { return corpo.getCorpo()->getPosition(); }
+        void setPosicao(const Vector2f pos) { corpo = pos; }
+        Vector2f getTamanho() { return corpo.getCorpo()->getSize(); }
+        Corpo_Grafico* getCorpoGraf() { return &corpo; }
 
-    void setChao(bool chao) { noChao = chao; }
-    bool getChao() { return noChao; }
+        Plataforma* getPlataforma() { return plat; }
+        void setPlataforma(Plataforma* p) { plat  = p; }
 
-    bool getPodeMorrer() { return podeMorrer; }
-    bool getPodeMatar() { return podeMatar; }
-    float getEmpurrao() { return empurrao; }
+        void setGerenciador(Gerenciador_Grafico *gerenciador) { pGG = gerenciador; }
 
-    int getVidas() { return vidas; }
-    void setVidas(int v) { vidas = v; }
+        void setMovimento(Vector2f mov) { movimento = mov; }
+        Vector2f getMovimento() { return movimento; }
 
-    virtual bool tomarDano();
+        void setChao(bool chao) { noChao = chao; }
+        bool getChao() { return noChao; }
 
-    Gerenciador_Grafico* getGerenciador() { return pGG; }
+        bool getPodeMorrer() { return podeMorrer; }
+        bool getPodeMatar() { return podeMatar; }
+        float getEmpurrao() { return empurrao; }
 
-    bool getMorto() { return morto; }
-    void setMorto() { morto = true; }
+        int getVidas() { return vidas; }
+        void setVidas(int v) { vidas = v; }
 
-protected:
-    int id;
+        virtual bool tomarDano();
 
-    static int contIdEntidade;
+        Gerenciador_Grafico* getGerenciador() { return pGG; }
 
-    Corpo_Grafico corpo;
-    Gerenciador_Grafico *pGG;
-    Plataforma* plat;
+        bool getMorto() { return morto; }
+        void setMorto() { morto = true; }
 
-    Vector2f movimento;
+        pair<Entidade*, int> gravar() {
+            pair<Entidade*, int> p;
+            p.first = this;
+            p.second = id;
+            return p;
+        }
 
-    int vidas;
+    protected:
+        int id;
 
-    bool noChao;
+        Corpo_Grafico corpo;
+        Gerenciador_Grafico *pGG;
+        Plataforma* plat;
 
-    bool podeMatar;
-    bool podeMorrer;
-    float empurrao;
+        Vector2f movimento;
 
-    bool morto;
-};
+        int vidas;
+
+        bool noChao;
+
+        bool podeMatar;
+        bool podeMorrer;
+        float empurrao;
+
+        bool morto;
+    };
+
+}

@@ -1,5 +1,7 @@
 #include "Atiradino.h"
 
+using namespace Inimigos;
+
 Atiradino::Atiradino(Plataforma* plataforma):
 Inimigo(plataforma->getGerenciador())
 {
@@ -31,6 +33,7 @@ Inimigo(plataforma->getGerenciador())
     hitbox->getCorpoGraf()->setTextura("Texturas/Efeitos/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
+    id = 3;
 }
 
 Atiradino::~Atiradino() {
@@ -54,7 +57,6 @@ void Atiradino::executar()
         ataquePronto = false;
 
     if(ataquePronto && rand()%400 == 0) {
-        //cout << "a";
         atacando = true;
         totalT -= 0.5f;
         hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);

@@ -1,4 +1,5 @@
 #include "Gerenciador_Grafico.h"
+using namespace Controladoras;
 
 Gerenciador_Grafico::Gerenciador_Grafico():
 janela(VideoMode(1280, 960), "Dino++", Style::Default),

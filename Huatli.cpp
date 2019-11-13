@@ -1,5 +1,7 @@
 #include "Huatli.h"
 
+using namespace Jogadores;
+
 Huatli::Huatli(Gerenciador_Grafico* g):
 Jogador(g)
 {
@@ -14,6 +16,7 @@ Jogador(g)
     posInicial = Vector2f(corpo.getPosicao().x / 2.0f, 710);
     corpo = (posInicial);
 
+    id = 7;
 }
 
 Huatli::~Huatli() {
@@ -77,7 +80,7 @@ void Huatli::mover() {
 
     movimento.y += 981.0 * dT * 2.5f;
 
-    if(Keyboard::isKeyPressed(Keyboard::W)) {
+    if(Keyboard::isKeyPressed(Keyboard::Q)) {
         movimento.y -= 20.0f;
     }
 

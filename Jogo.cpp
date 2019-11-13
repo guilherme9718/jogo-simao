@@ -1,10 +1,20 @@
 #include "Jogo.h"
+#include "MenuPrincipal.h"
+using namespace Controladoras;
+
+Jogo* Jogo::CriarJogo() {
+    if(not jogoUnico) {
+        jogoUnico = new Jogo();
+    }
+    
+    return jogoUnico;
+}
 
 Jogo::Jogo()
 {
     srand(time(NULL));
     
-    estados.push(reinterpret_cast<Estado*>(new MenuPrincipal(this)));
+    pilha.colocarEstado(reinterpret_cast<Estado*>(new MenuPrincipal(this)));
 
 }
 
@@ -27,24 +37,11 @@ void Jogo::executar() {
         GG.limpar();
         GG.leEventos();
 
-        if(not estados.empty())
-            estados.top()->executar();
-        else {
+        if( not pilha.executar() )
             GG.getJanela()->close();
-        }
-        
-        if(not lixo.empty()) {
-            delete lixo.top();
-            lixo.pop();
-        }
 
         GG.getJanela()->display();
     }
 }
 
-void Jogo::tirarEstado() {
-    if(!estados.empty()) { 
-        lixo.push(estados.top());
-        estados.pop();
-    }
-}
+Jogo* Jogo::jogoUnico = NULL;

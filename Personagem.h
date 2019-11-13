@@ -1,29 +1,38 @@
 #pragma once
 #include "stdafx.h"
 #include "Entidade.h"
+#include "Projetil.h"
 
-class Personagem : public Entidade {
-public:
-    Personagem(Gerenciador_Grafico* gerenciador = NULL);
-    virtual ~Personagem();
+using namespace Abstratas;
+using namespace Auxiliares;
 
-    virtual void imprimir();
-    //virtual void Colidindo(Vector2f direcao);
-    virtual void executar();
+namespace Personagens {
+    class Personagem : public Entidade {
+    public:
+        Personagem(Gerenciador_Grafico* gerenciador = NULL);
+        virtual ~Personagem();
 
-    virtual void animar(Vector2f movimento);
+        virtual void imprimir();
+        virtual void executar();
 
-protected:
-    float velocidade;
+        virtual void animar(Vector2f movimento);
 
-    bool atacando;
-    float totalT;
+    protected:
+        float velocidade;
 
-    bool aDireita;
-    short int lado;
+        bool atacando;
+        float totalT;
 
+        bool aDireita;
+        short int lado;
 
+        bool tomaDano;
+        bool ferido;
 
-};
+        bool ataquePronto;
+        Projetil* hitbox;
 
+    };
+    
+}
 

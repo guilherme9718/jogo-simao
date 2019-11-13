@@ -2,14 +2,18 @@
 #include "stdafx.h"
 #include "Entidade.h"
 
-class Projetil : public Entidade {
-public:
-    Projetil(Gerenciador_Grafico* GG = NULL);
-    ~Projetil();
-    
-    void executar() { }
-    
-private:
-    
-};
+using namespace Abstratas;
+using namespace Auxiliares;
 
+namespace Auxiliares {
+    class Projetil : public Entidade {
+    public:
+        Projetil(Gerenciador_Grafico* GG = NULL);
+        ~Projetil();
+
+        void executar() { }
+
+    private:
+
+    };
+}

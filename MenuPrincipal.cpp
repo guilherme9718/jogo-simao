@@ -45,6 +45,7 @@ void MenuPrincipal::executar() {
             //Ranking
             break;
         case 3:
+            carregar();
             //Carregar
             break;
         case 4:

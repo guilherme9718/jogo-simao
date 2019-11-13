@@ -2,11 +2,15 @@
 #include "stdafx.h"
 #include "Estado.h"
 
-class MenuEstado : public Estado {
-public:
-    MenuEstado();
-    virtual ~MenuEstado();
-private:
+using namespace Estados;
 
-};
+namespace Estados {
+    class MenuEstado : public Estado {
+    public:
+        MenuEstado();
+        virtual ~MenuEstado();
+    private:
+
+    };
+}
 

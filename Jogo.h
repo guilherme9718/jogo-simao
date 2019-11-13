@@ -1,37 +1,38 @@
 #pragma once
 #include "stdafx.h"
-#include "Fase.h"
-#include "Jogador.h"
-#include "Menu.h"
 #include "Gerenciador_Grafico.h"
-#include "Montanha.h"
-#include "Floresta.h"
-#include "Huatli.h"
-#include "Angrath.h"
-#include "MenuPrincipal.h"
+#include "Estado.h"
+#include "PilhaEstados.h"
 
-class Jogo {
-public:
-    Jogo();
-    ~Jogo();
+using namespace Estados;
+// Singleton
+namespace Controladoras {
+    class Jogo {        
+    public:
+        static Jogo* CriarJogo();
+        ~Jogo();
 
-    void executar();
-    
-    void tirarEstado();
-    void colocarEstado(Estado* est) { estados.push(est); }
-    const bool pilhaVazia() { return estados.empty(); }
-    const unsigned int pilhaTam() const { return estados.size(); }
-    Estado* getTopo() const { if(not estados.empty()) return estados.top(); }
-    
+        
+        void executar();
 
-    //Sets e Gets
+        void tirarEstado(bool excluir = true) { pilha.tirarEstado(excluir); }
+        void colocarEstado(Estado* est) { pilha.colocarEstado(est); }
+        const bool pilhaVazia() { return pilha.pilhaVazia(); }
+        const unsigned int pilhaTam() const { return pilha.pilhaTam(); }
+        Estado* getTopo() const { return pilha.getTopo(); }
 
-    Gerenciador_Grafico* getGerenciador() { return &GG; }
-private:
+        PilhaEstados operator--() {
+            this->tirarEstado(true);
+        }
+        //Sets e Gets
 
+        Gerenciador_Grafico* getGerenciador() { return &GG; }
+    private:
+        Jogo();
+        static Jogo* jogoUnico;
 
-    stack<Estado*> estados;
-    stack<Estado*> lixo;
+        PilhaEstados pilha;
 
-    Gerenciador_Grafico GG;
-};
+        Gerenciador_Grafico GG;
+    };
+}

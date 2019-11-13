@@ -2,11 +2,12 @@
 #include "Plataforma.h"
 #include "Projetil.h"
 
+using namespace Abstratas;
+
 Entidade::Entidade(Gerenciador_Grafico* gerenciador):
 podeMatar(true), podeMorrer(true), empurrao(1.0f), movimento(0.0f, 0.0f), noChao(true), morto(false)
 {
-    contIdEntidade++;
-    id = contIdEntidade;
+    id = -1;
     vidas = 10;
     plat = NULL;
     pGG = gerenciador;
@@ -27,5 +28,3 @@ bool Entidade::tomarDano()
         return true;
     return false;
 }
-
-int Entidade::contIdEntidade = 0;

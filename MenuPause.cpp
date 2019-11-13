@@ -36,20 +36,24 @@ void MenuPause::executar() {
             pJogo->tirarEstado();
             break;
         case 1:
+            pressionar = false;
+            pJogo->tirarEstado(false);
+            reinterpret_cast<Fase*>(pJogo->getTopo())->salvar();
+            pJogo->colocarEstado(reinterpret_cast<Estado*>(this));
             //Salvar
             break;
         case 2:
             //Ranking
             break;
         case 3:
+            limparEstados();
+            carregar();
             //Carregar
             break;
         case 4:
-            k = pJogo->pilhaTam();
-            while(k != 1) {
-                pJogo->tirarEstado();
-                k--;
-            }
+            limparEstados();
+            reinterpret_cast<MenuPrincipal*>(pJogo->getTopo())->setPressionar(false);
+            
             //Sair
             break;
         default:

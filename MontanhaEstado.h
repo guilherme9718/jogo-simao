@@ -2,11 +2,15 @@
 #include "stdafx.h"
 #include "FaseEstado.h"
 
-class MontanhaEstado : public FaseEstado {
-public:
-    MontanhaEstado();
-    virtual ~MontanhaEstado();
-private:
+using namespace Estados;
 
-};
+namespace Estados {
+    class MontanhaEstado : public FaseEstado {
+    public:
+        MontanhaEstado();
+        virtual ~MontanhaEstado();
+    private:
+
+    };
+}
 
