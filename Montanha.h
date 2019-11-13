@@ -14,25 +14,36 @@
 #include "Atiradino.h"
 #include "Floresta.h"
 
-class Montanha : public Fase, public MontanhaEstado {
-public:
-    Montanha(Jogo* jooAj = NULL, bool dois = false);
-    ~Montanha();
+using namespace Abstratas;
+using namespace Listas;
+using namespace Jogadores;
+using namespace GerenciadoresFases;
+using namespace Inimigos;
+using namespace Personagens;
+using namespace Obstaculos;
+using namespace Estados;
 
-    void executar();
-    void pontuacao();
-    void trocaFase();
+namespace Fases {
+    class Montanha : public Fase, public MontanhaEstado {
+    public:
+        Montanha(Jogo* jooAj = NULL, bool dois = false, string salvo = "");
+        ~Montanha();
 
-    void instanciaPlataformas();
-    void instanciaInimigos(Plataforma* plat);
-    void instanciaObstaculos(Plataforma* plat);
-    void instanciaFundo();
+        void executar();
+        void pontuacao();
+        void trocaFase();
 
-private:
+        void instanciaPlataformas();
+        void instanciaInimigos(Plataforma* plat);
+        void instanciaObstaculos(Plataforma* plat);
+        void instanciaFundo();
 
-    Colisora* colisora;
+    private:
 
-    Fundo fundo;
-    Gerenciador_Grafico* pGG;
-};
+        Colisora* colisora;
+
+        Fundo fundo;
+        Gerenciador_Grafico* pGG;
+    };
+}
 

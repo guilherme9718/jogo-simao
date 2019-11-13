@@ -2,12 +2,16 @@
 #include "stdafx.h"
 #include "MenuEstado.h"
 
-class MenuPauseEstado : public MenuEstado {
-public:
-    MenuPauseEstado();
-    MenuPauseEstado(const MenuPauseEstado& orig);
-    virtual ~MenuPauseEstado();
-private:
+using namespace Estados;
 
-};
+namespace Estados {
+    class MenuPauseEstado : public MenuEstado {
+    public:
+        MenuPauseEstado();
+        MenuPauseEstado(const MenuPauseEstado& orig);
+        virtual ~MenuPauseEstado();
+    private:
+
+    };
+}
 

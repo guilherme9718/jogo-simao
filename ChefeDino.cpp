@@ -1,5 +1,7 @@
 #include "ChefeDino.h"
 
+using namespace Inimigos;
+
 ChefeDino::ChefeDino(Plataforma* p):
 Inimigo(p->getGerenciador())
 {
@@ -7,7 +9,7 @@ Inimigo(p->getGerenciador())
 
     plat = p;
 
-    vidas = 3;
+    vidas = 4;
     pulo = 380.0f;
 
     aux = (plat->getTamanho().x / 2.0f) - 50.0f;
@@ -32,9 +34,12 @@ Inimigo(p->getGerenciador())
     hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
     hitbox->getCorpoGraf()->setTextura("Texturas/Efeitos/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
+    
+    id = 5;
 }
 
 ChefeDino::~ChefeDino() {
+    hitbox->setMorto();
 }
 
 void ChefeDino::mover() {
@@ -82,7 +87,7 @@ void ChefeDino::executar() {
     if(ataquePronto && rand()%400 == 0) {
         atacando = true;
         totalT -= 0.5f;
-        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
+        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (300.0f * -1), corpo.getPosicao().y);
         ataquePronto = false;
 
     }

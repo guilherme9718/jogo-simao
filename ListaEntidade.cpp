@@ -95,6 +95,8 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
         {
             excluir(itr);
             itr = aux;
+            if(aux == NULL)
+                break;
         }
 
         if(colisora->atacando(itr->getAtual(), jog, direcao))
@@ -112,6 +114,8 @@ void ListaEntidade::colidir(Jogador* j, Jogador* j2, Colisora* colisora) {
                         j->setPontos(j->getPontos() + 15);
                         excluir(itr);
                         itr = aux;
+                        if(aux == NULL)
+                            break;
                     }
                 }
         }
@@ -171,17 +175,12 @@ void ListaEntidade::excluir(Lista<Entidade>::Elemento<Entidade>* no) {
     }
 }
 
-/*void ListaEntidade::excluir(int id) {
+void ListaEntidade::gravar(Persistidora* pers) {
     Lista<Entidade>::Elemento<Entidade>* itr = LEs.getPrimeiro(), *aux = NULL;
 
     while(itr) {
-        if(itr->getAtual()->getId() == id) {
-            aux = itr->getProx();
-            itr = itr->getAnt();
-            delete (itr->getProx());
-            itr->setProx(aux);
-        }
+        pers->gravar(itr->getAtual()->gravar());
         itr = itr->getProx();
     }
-}*/
+}
 

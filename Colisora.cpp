@@ -1,6 +1,9 @@
 #include "Colisora.h"
 #include "Corpo_Grafico.h"
 #include "Entidade.h"
+using namespace Controladoras;
+using namespace Abstratas;
+using namespace GerenciadoresFases;
 
 Colisora::Colisora() {
 

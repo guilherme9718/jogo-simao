@@ -1,10 +1,12 @@
 #pragma once
 #include "stdafx.h"
 
-class FlorestaEstado {
-public:
-    FlorestaEstado();
-    virtual ~FlorestaEstado();
-private:
+namespace Estados {
+    class FlorestaEstado {
+    public:
+        FlorestaEstado();
+        virtual ~FlorestaEstado();
+    private:
 
-};
+    };
+}

@@ -1,16 +1,22 @@
 #pragma once
 #include "stdafx.h"
 #include "Obstaculo.h"
+#include "Plataforma.h"
 
-class Pedra : public Obstaculo {
-public:
-    Pedra(Gerenciador_Grafico* g);
-    ~Pedra();
+using namespace Obstaculos;
+using namespace Auxiliares;
 
-    void executar() {}
+namespace Obstaculos {
+    class Pedra : public Obstaculo {
+    public:
+        Pedra(Plataforma* plat);
+        ~Pedra();
 
-private:
+        void executar();
 
-};
+    private:
+
+    };
+}
 
 

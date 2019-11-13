@@ -1,14 +1,19 @@
 #pragma once
 #include "stdafx.h"
 #include "Obstaculo.h"
+#include "Corpo_Grafico.h"
 
-class Carnivora : public Obstaculo {
-public:
-    Carnivora(Gerenciador_Grafico* g);
-    ~Carnivora();
+using namespace GerenciadoresEntidades;
 
-private:
+namespace Obstaculos {
+    class Carnivora : public Obstaculo {
+    public:
+        Carnivora(Gerenciador_Grafico* g);
+        ~Carnivora();
 
-};
+    private:
+
+    };
+}
 
 

@@ -1,8 +1,12 @@
 #include "Personagem.h"
 
+using namespace Personagens;
+
 Personagem::Personagem(Gerenciador_Grafico* g):
 Entidade(g)
 {
+    hitbox = NULL;
+    ataquePronto = false;
     velocidade = 500.0f;
 
     atacando = false;
@@ -14,6 +18,9 @@ Entidade(g)
     lado = 1;
 
     podeMorrer = true;
+    
+    tomaDano = true;
+    ferido = false;
 }
 
 Personagem::~Personagem() {
@@ -27,29 +34,14 @@ void Personagem::imprimir(){
     pGG->desenhar(corpo.getCorpo());
 }
 
-//void Personagem::Colidindo(Vector2f direcao) {
-//    if(direcao.x < 0) //Colidindo na esquerda
-//        movimento.x = 0;
-//
-//    else if(direcao.x > 0) //Colidindo na direita
-//        movimento.x = 0;
-//
-//    if(direcao.y > 0) //Colidindo em cima
-//    {
-//        movimento.y = 0;
-//    }
-//
-//    else if(direcao.y < 0) //Colidindo em baixo
-//    {
-//        movimento.y = 0;
-//        noChao = true;
-//    }
-//}
-
 void Personagem::animar(Vector2f movimento) {
     Vector2u animacao(0, 4);
     float tempoTrocaAnimacao = 0.3f;
-    if (movimento.x == 0.0f) {
+    if(ferido) {
+        animacao.x = 14;
+        animacao.y = 3;
+    }
+    else if (movimento.x == 0.0f) {
         //Animação parado
         if(atacando) {
             animacao.x = 17;

@@ -1,4 +1,6 @@
 #include "Jogo.h"
+#include "MenuPrincipal.h"
+using namespace Controladoras;
 
 Jogo::Jogo()
 {
@@ -42,9 +44,11 @@ void Jogo::executar() {
     }
 }
 
-void Jogo::tirarEstado() {
+void Jogo::tirarEstado(bool excluir) {
     if(!estados.empty()) { 
-        lixo.push(estados.top());
+        if(excluir)
+            lixo.push(estados.top());
+        
         estados.pop();
     }
 }

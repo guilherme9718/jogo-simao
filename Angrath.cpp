@@ -1,5 +1,7 @@
 #include "Angrath.h"
 
+using namespace Jogadores;
+
 Angrath::Angrath(Gerenciador_Grafico* g):
 Jogador(g)
 {
@@ -14,6 +16,8 @@ Jogador(g)
 
     posInicial = Vector2f((corpo.getPosicao().x / 2.0f) + 70.0f, 710);
     corpo = (posInicial);
+    
+    id = 2;
 
 }
 

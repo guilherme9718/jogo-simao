@@ -15,22 +15,34 @@
 #include "Galhos.h"
 #include "ChefeDino.h"
 
-class Floresta : public Fase, public FlorestaEstado {
-public:
-    Floresta(Jogo* jooj = NULL, bool dois = false, Huatli* j1 = NULL, Angrath* j2 = NULL);
-    ~Floresta();
-    
-    void executar();
-    void pontuacao();
+using namespace Abstratas;
+using namespace Listas;
+using namespace Jogadores;
+using namespace GerenciadoresFases;
+using namespace Inimigos;
+using namespace Personagens;
+using namespace Obstaculos;
+using namespace Estados;
+using namespace Controladoras;
 
-    void instanciaPlataformas();
-    void instanciaInimigos(Plataforma* plat);
-    void instanciaObstaculos(Plataforma* plat);
-    void instanciaFundo();
-private:
-    Colisora* colisora;
+namespace Fases {
+    class Floresta : public Fase, public FlorestaEstado {
+    public:
+        Floresta(Jogo* jooj = NULL, bool dois = false, Huatli* j1 = NULL, Angrath* j2 = NULL);
+        Floresta(Jogo* jooj, bool dois, string salvo = "");
+        ~Floresta();
 
-    Fundo fundo;
-    Gerenciador_Grafico* pGG;
-};
+        void executar();
+        void pontuacao();
 
+        void instanciaPlataformas();
+        void instanciaInimigos(Plataforma* plat);
+        void instanciaObstaculos(Plataforma* plat);
+        void instanciaFundo();
+    private:
+        Colisora* colisora;
+
+        Fundo fundo;
+        Gerenciador_Grafico* pGG;
+    };
+}

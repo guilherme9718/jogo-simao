@@ -1,5 +1,4 @@
 #include "Menu.h"
-#include "Jogo.h"
 
 Menu::Menu(Jogo* jogo):
 pJogo(jogo), fundo(1, pJogo->getGerenciador())
@@ -85,3 +84,27 @@ void Menu::posicionarTexto() {
     texto[4].setPosition(pGG->getVisao()->getCenter().x, pGG->getVisao()->getCenter().y - 000);
 }
 
+void Menu::carregar(string nome) {
+    ifstream leitor("Arquivos/Jogos/Fase" + nome + ".dat", ios::in);
+    int fase;
+    int dois;
+    leitor >> fase;
+    leitor >> dois;
+
+    if(fase == 0)
+        pJogo->colocarEstado(reinterpret_cast<Estado*>(new Montanha(pJogo, dois, nome)));
+    else if(fase == 1)
+        pJogo->colocarEstado(reinterpret_cast<Estado*>(new Montanha(pJogo, dois, nome)));
+    
+    leitor.close();
+        
+}
+
+void Menu::limparEstados() {
+    int k;
+    k = pJogo->pilhaTam();
+    while(k != 1) {
+        pJogo->tirarEstado();
+        k--;
+    }
+}

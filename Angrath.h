@@ -1,15 +1,22 @@
 #pragma once
 #include "stdafx.h"
 #include "Jogador.h"
+#include "Corpo_Grafico.h"
+#include "Animadora.h"
 
-class Angrath : public Jogador {
-public:
-    Angrath(Gerenciador_Grafico* g);
-    ~Angrath();
+using namespace Controladoras;
+using namespace GerenciadoresEntidades;
 
-    void mover();
-    void executar();
+namespace Jogadores {
+    class Angrath : public Jogador {
+    public:
+        Angrath(Gerenciador_Grafico* g);
+        ~Angrath();
 
-private:
-};
+        void mover();
+        void executar();
+
+    private:
+    };
+}
 

@@ -1,4 +1,7 @@
 #include "Corpo_Grafico.h"
+#include "Animadora.h"
+
+using namespace GerenciadoresEntidades;
 
 Corpo_Grafico::Corpo_Grafico()
 {

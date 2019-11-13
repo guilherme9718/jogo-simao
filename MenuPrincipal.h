@@ -6,16 +6,23 @@
 #include "Montanha.h"
 #include "Floresta.h"
 
-class MenuPrincipal : public Menu, public MenuPrincipalEstado {
-public:
-    MenuPrincipal(Jogo* jogo);
-    ~MenuPrincipal();
+using namespace Controladoras;
+using namespace Estados;
+using namespace Fases;
 
-    void executar();
-    void setSelecionado(const int s) { selecionado = s; }
-    
-private:
-    Montanha* montanha;
-    Floresta* floresta;
 
-};
+namespace Controladoras {
+    class MenuPrincipal : public Menu, public MenuPrincipalEstado {
+    public:
+        MenuPrincipal(Jogo* jogo);
+        ~MenuPrincipal();
+
+        void executar();
+        void setSelecionado(const int s) { selecionado = s; }
+
+    private:
+        Montanha* montanha;
+        Floresta* floresta;
+
+    };
+}

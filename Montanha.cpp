@@ -1,35 +1,38 @@
 #include "Montanha.h"
 #include "Jogo.h"
 
-Montanha::Montanha(Jogo* jooj, bool dois):
+using namespace Fases;
+
+Montanha::Montanha(Jogo* jooj, bool dois, string salvo):
 Fase(jooj, dois), fundo(5, pJogo->getGerenciador())
 {
+    id = 0;
     pGG = pJogo->getGerenciador();
     srand(time(NULL));
     colisora = new Colisora();
     jogador2 = NULL;
+    jogador1 = NULL;
+    
+    if(salvo == "") {
+        //Instanciar jogador
 
-    //Instanciar jogador
+        jogador1 = new Huatli(pJogo->getGerenciador());
+        entidades.incluir(static_cast<Entidade*>(jogador1));
 
-    jogador1 = new Huatli(pJogo->getGerenciador());
-    entidades.incluir(static_cast<Entidade*>(jogador1));
+        if(doisJogadores) {
+            jogador2 = new Angrath(pJogo->getGerenciador());
+            entidades.incluir(static_cast<Entidade*>(jogador2));
+        }
 
-    if(doisJogadores) {
-        jogador2 = new Angrath(pJogo->getGerenciador());
-        entidades.incluir(static_cast<Entidade*>(jogador2));
+        instanciaFundo();
+
+        // Instanciar plataformas
+        instanciaPlataformas();
     }
-
-    instanciaFundo();
-
-    // Instanciar plataformas
-    instanciaPlataformas();
-
-    //Posicao em y da plataforma:
-    //Tamanho da janela (960) - (plat->getTamanho().y / 2.0f) == mais baixo possivel
-
-    //Para colar duas plataformas: 480 de posicao em x uma da outra
-    //Distancia ideal de pulo: (tamanho da plataforma + 400)  de posicao em x uma da outra considerando mesma altura
-
+    else {
+        //Carregar jogo Salvo
+        carregar(salvo);
+    }
 
 }
 
@@ -60,9 +63,10 @@ void Montanha::executar() {
             jogador1->morrer();
     }
 
+    reiniciar();
     pontuacao();
 
-    //cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
+    cout << jogador1->getPosicao().x << " " << jogador1->getPosicao().y << endl;
 }
 
 void Montanha::instanciaPlataformas() {
@@ -71,10 +75,6 @@ void Montanha::instanciaPlataformas() {
     Plataforma* plat;
     Atiradino* atr;
     int tipo;
-
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist(0,2);
 
     if (!plats)
     {
@@ -91,14 +91,15 @@ void Montanha::instanciaPlataformas() {
         plats >> tam.x >> tam.y;
         plats >> pos.x >> pos.y;
         plats >> tipo;
+        //tipo = 0;
 
         plat = new Plataforma(tam);
         plat->setGerenciador(pJogo->getGerenciador());
         plat->getCorpoGraf()->setPosicao(pos);
         entidades.incluir(static_cast<Entidade*>(plat));
 
-        int aleatorio = dist(rng);
-        aleatorio = rand()%3;
+        
+        int aleatorio = rand()%3;
 
         if(tipo == 1) {
             if(aleatorio == 0) {
@@ -243,5 +244,20 @@ void Montanha::trocaFase() {
     if(jogador1->getPosicao().x < -200.0f && jogador1->getPosicao().y > 1000.0f) {
         pJogo->tirarEstado();
         pJogo->colocarEstado(reinterpret_cast<Estado*>(new Floresta(pJogo, doisJogadores, jogador1, jogador2)));
+    }
+    else if(jogador1->getPosicao().x > 4500.0f) {
+        pJogo->tirarEstado();
+        pJogo->colocarEstado(reinterpret_cast<Estado*>(new Floresta(pJogo, doisJogadores, jogador1, jogador2)));
+    }
+    
+    if(doisJogadores) {
+        if(jogador2->getPosicao().x < -200.0f && jogador2->getPosicao().y > 1000.0f) {
+            pJogo->tirarEstado();
+            pJogo->colocarEstado(reinterpret_cast<Estado*>(new Floresta(pJogo, doisJogadores, jogador1, jogador2)));
+        }
+        else if(jogador2->getPosicao().x > 4000.0f) {
+            pJogo->tirarEstado();
+            pJogo->colocarEstado(reinterpret_cast<Estado*>(new Floresta(pJogo, doisJogadores, jogador1, jogador2)));
+        }
     }
 }

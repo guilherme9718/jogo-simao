@@ -1,13 +1,16 @@
 #include "Floresta.h"
 #include "Jogo.h"
 
+using namespace Fases;
+
 Floresta::Floresta(Jogo* jooj, bool dois, Huatli* j1, Angrath* j2):
 Fase(jooj, dois), fundo(2, pJogo->getGerenciador())
 {
+    id = 1;
     pGG = pJogo->getGerenciador();
     srand(time(NULL));
     colisora = new Colisora();
-
+    
     //Instanciar jogador
     jogador1 = new Huatli(pGG);
     jogador1->setVidas(j1->getVidas());
@@ -37,6 +40,39 @@ Fase(jooj, dois), fundo(2, pJogo->getGerenciador())
 
 }
 
+Floresta::Floresta(Jogo* jooj, bool dois, string salvo):
+Fase(jooj, dois), fundo(5, pJogo->getGerenciador())
+{
+    id = 0;
+    pGG = pJogo->getGerenciador();
+    srand(time(NULL));
+    colisora = new Colisora();
+    jogador2 = NULL;
+    jogador1 = NULL;
+    
+    if(salvo == "") {
+        //Instanciar jogador
+
+        jogador1 = new Huatli(pJogo->getGerenciador());
+        entidades.incluir(static_cast<Entidade*>(jogador1));
+
+        if(doisJogadores) {
+            jogador2 = new Angrath(pJogo->getGerenciador());
+            entidades.incluir(static_cast<Entidade*>(jogador2));
+        }
+
+        instanciaFundo();
+
+        // Instanciar plataformas
+        instanciaPlataformas();
+    }
+    else {
+        //Carregar jogo Salvo
+        carregar(salvo);
+    }
+
+}
+
 Floresta::~Floresta() {
 
 }
@@ -63,6 +99,8 @@ void Floresta::executar() {
         if(jogador1->getPosicao().y > 2000.0f)
             jogador1->morrer();
     }
+    
+    reiniciar();
 
     pontuacao();
 
@@ -127,6 +165,8 @@ void Floresta::instanciaPlataformas() {
         else if(tipo == 3)
         {
             chefe = new ChefeDino(plat);
+            int numJog = (int)doisJogadores + 1;
+            chefe->setVidas(numJog * 4);
             entidades.incluir(static_cast<Entidade*>(chefe));
             entidades.incluir(static_cast<Entidade*>(chefe->getProjetil()));
         }
