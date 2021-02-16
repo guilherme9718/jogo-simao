@@ -3,24 +3,33 @@
 #include "Entidade.h"
 #include "Lista.h"
 #include "Jogador.h"
+#include "Persistidora.h"
 
-class ListaEntidade {
-public:
-    ListaEntidade();
-    ~ListaEntidade();
+using namespace Listas;
+using namespace Abstratas;
+using namespace Jogadores;
+using namespace GerenciadoresFases;
 
-    void executar();
-    void imprimir();
-    
-    void colidir(Jogador* j, Colisora* colisora);
-    void colidir(Jogador* j, Jogador* j2, Colisora* colisora);
+namespace Listas {
+    class ListaEntidade {
+    public:
+        ListaEntidade();
+        ~ListaEntidade();
 
-    void incluir(Entidade* ent);
-    //void excluir(int id);
-    void limpar();
-private:
-    Lista<Entidade> LEs;
-    void excluir(Lista<Entidade>::Elemento<Entidade>* no);
-};
+        void executar();
+        void imprimir();
+
+        void colidir(Jogador* j, Colisora* colisora);
+        void colidir(Jogador* j, Jogador* j2, Colisora* colisora);
+
+        void incluir(Entidade* ent);
+        void gravar(Persistidora* pers);
+        void limpar();
+    private:
+        Lista<Entidade> LEs;
+        void excluir(Lista<Entidade>::Elemento<Entidade>* no);
+
+    };
+}
 
 

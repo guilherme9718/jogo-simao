@@ -1,21 +1,33 @@
 #pragma once
 #include "stdafx.h"
-#include "MenuPrincipalEstado.h"
 #include "Menu.h"
 #include "Estado.h"
 #include "Montanha.h"
 #include "Floresta.h"
+#include "FabricaMontanha.h"
+#include "FabricaFloresta.h"
 
-class MenuPrincipal : public Menu, public MenuPrincipalEstado {
-public:
-    MenuPrincipal(Jogo* jogo);
-    ~MenuPrincipal();
+using namespace Fabricas;
+using namespace Controladoras;
+using namespace Estados;
+using namespace Fases;
 
-    void executar();
-    void setSelecionado(const int s) { selecionado = s; }
-    
-private:
-    Montanha* montanha;
-    Floresta* floresta;
 
-};
+namespace Controladoras {
+    class MenuPrincipal : public Menu {
+    public:
+        MenuPrincipal(Jogo* jogo);
+        ~MenuPrincipal();
+
+        void executar();
+        void setSelecionado(const int s) { selecionado = s; }
+
+    private:
+        Montanha* montanha;
+        Floresta* floresta;
+        
+        FabricaMontanha fab1;
+        FabricaFloresta fab2;
+
+    };
+}

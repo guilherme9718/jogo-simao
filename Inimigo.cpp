@@ -1,5 +1,6 @@
 #include "Inimigo.h"
 #include "Plataforma.h"
+using namespace Inimigos;
 
 Inimigo::Inimigo(Gerenciador_Grafico* g):
 Personagem(g)

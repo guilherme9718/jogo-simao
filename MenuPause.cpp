@@ -21,7 +21,7 @@ void MenuPause::executar() {
     fundo.imprimir();
     
     posicionarTexto();
-
+    exibeRanking();
     texto[selecionado].setFillColor(Color::Cyan);
     for(i = 0; i < 5; i++) {
         pGG->getJanela()->draw(texto[i]);
@@ -36,20 +36,29 @@ void MenuPause::executar() {
             pJogo->tirarEstado();
             break;
         case 1:
+            pressionar = false;
+            pJogo->tirarEstado(false);
+            reinterpret_cast<Fase*>(pJogo->getTopo())->salvar();
+            pJogo->colocarEstado(reinterpret_cast<Estado*>(this));
             //Salvar
             break;
         case 2:
+            if(ranking)
+                ranking = false;
+            else
+                ranking = true;
+            pressionar = false;
             //Ranking
             break;
         case 3:
+            limparEstados();
+            carregar();
             //Carregar
             break;
         case 4:
-            k = pJogo->pilhaTam();
-            while(k != 1) {
-                pJogo->tirarEstado();
-                k--;
-            }
+            limparEstados();
+            reinterpret_cast<MenuPrincipal*>(pJogo->getTopo())->setPressionar(false);
+            
             //Sair
             break;
         default:

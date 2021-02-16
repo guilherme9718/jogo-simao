@@ -1,18 +1,18 @@
 #include "Animadora.h"
-#include "Corpo_Grafico.h"
 
-Animadora::Animadora(Corpo_Grafico* corpo) {
+
+GerenciadoresEntidades::Animadora::Animadora(Corpo_Grafico* corpo) {
     pCorpo = corpo;
     textura = NULL;
     
     inicializa(Vector2f(0, 0), Vector2u(0, 0), Vector2u(1, 1));
 }
 
-Animadora::~Animadora() {
+GerenciadoresEntidades::Animadora::~Animadora() {
     
 }
 
-void Animadora::inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros) {
+void GerenciadoresEntidades::Animadora::inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vector2u TotalDeQuadros) {
     qtdQuadros = quantidadeQuadros;
     tempoTroca = 0.3f;
     tempoTotal = 0;
@@ -28,7 +28,7 @@ void Animadora::inicializa(Vector2f margemErro, Vector2u quantidadeQuadros, Vect
     quadro.height = (textura->getSize().y / (float)(TotalDeQuadros.y));
 }
 
-void Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca, unsigned int linha) {
+void GerenciadoresEntidades::Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP, unsigned int quantidadeQuadrosX, float troca, unsigned int linha) {
     quadrosAtuais.y = linha;
     qtdQuadros.x = quantidadeQuadrosX;
     tempoTotal += dT;
@@ -70,7 +70,7 @@ void Animadora::atualizar(float dT, bool aDireita, unsigned int comecoP, unsigne
     quadro.height = aux.y;
 }
 
-void Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, unsigned int quadrosUltimaLinha, float troca) {
+void GerenciadoresEntidades::Animadora::atualizarLinhasSequencial(float dT, bool aDireita, Vector2u quantidadeQuadros, unsigned int quadrosUltimaLinha, float troca) {
     qtdQuadros.x = quantidadeQuadros.x;
     qtdQuadros.y = quantidadeQuadros.y;
     tempoTotal += dT;

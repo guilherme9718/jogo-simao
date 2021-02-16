@@ -3,38 +3,44 @@
 #include "Personagem.h"
 #include "Projetil.h"
 
-class Jogador : public Personagem {
-public:
-    Jogador(Gerenciador_Grafico* gerenciador = NULL);
-    virtual ~Jogador();
+using namespace Personagens;
+using namespace Auxiliares;
 
-    void morrer();
-    void morrer(Vector2f pos);
+namespace Jogadores {
+    class Jogador : public Personagem {
+    public:
+        Jogador(Gerenciador_Grafico* gerenciador = NULL);
+        virtual ~Jogador();
 
-    void imprimir();
+        void morrer();
+        void morrer(Vector2f pos);
 
-    virtual void executar() = 0;
+        void imprimir();
 
-    //Sets e Gets
+        virtual void executar() = 0;
 
-    void setAtacando(const bool atac) { atacando = atac; }
-    const bool getAtacando() const { return atacando; }
-    Corpo_Grafico* getHitbox() { return hitbox->getCorpoGraf(); }
+        //Sets e Gets
 
-    Projetil* getProjetil() { return hitbox; }
+        void setAtacando(const bool atac) { atacando = atac; }
+        const bool getAtacando() const { return atacando; }
+        Corpo_Grafico* getHitbox() { return hitbox->getCorpoGraf(); }
 
-    void setPontos (const int p) { pontos = p; }
-    int getPontos() const { return pontos; }
+        Projetil* getProjetil() { return hitbox; }
 
-protected:
-    Vector2f posInicial;
-    Projetil* hitbox;
-    bool ataquePronto;
-    short ladoAtaque;
+        void setPontos (const int p) { pontos = p; }
+        int getPontos() const { return pontos; }
 
-    int pontos;
-    float pulo;
-    float vJog;
-};
+    protected:
+        Vector2f posInicial;
+        Projetil* hitbox;
+        bool ataquePronto;
+        short ladoAtaque;
 
+        int pontos;
+        float pulo;
+
+        //Auxiliares
+        float vJog;
+    };
+}
 

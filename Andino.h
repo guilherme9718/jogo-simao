@@ -3,20 +3,23 @@
 #include "Inimigo.h"
 #include "Plataforma.h"
 
-class Andino : public Inimigo {
-public:
-    //Andino(Gerenciador_Grafico* g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
-    Andino(Plataforma* plataforma);
-    ~Andino();
+using namespace Auxiliares;
 
-    void mover();
-    //void morrer();
+namespace Inimigos {
+    class Andino : public Inimigo {
+    public:
+        //Andino(Gerenciador_Grafico* g = NULL, Vector3f f = Vector3f(0.0f, 0.0f, 0.0f));
+        Andino(Plataforma* plataforma);
+        ~Andino();
 
-    void randomiza() {
-        srand(time(NULL));
+        void mover();
+        //void morrer();
 
-    }
-private:
-    float pulo;
-};
+        void randomiza() {
+            srand(time(NULL));
 
+        }
+    private:
+        float pulo;
+    };
+}

@@ -1,0 +1,4 @@
+Dino++
+Compilador: GCC MinGW-64w versão 7.0.0
+SO: Windows 10 Pro Versão 1903
+Biblioteca gráfica: SMFL 2.5.0

@@ -2,20 +2,24 @@
 #include "stdafx.h"
 #include "Personagem.h"
 
-class Inimigo : public Personagem {
-public:
-    Inimigo(Gerenciador_Grafico* g = NULL);
-    virtual ~Inimigo();
+using namespace Personagens;
 
-    virtual void executar();
-    virtual void imprimir();
-    bool tomarDano();
+namespace Inimigos {
+    class Inimigo : public Personagem {
+    public:
+        Inimigo(Gerenciador_Grafico* g = NULL);
+        virtual ~Inimigo();
 
-protected:
-    Vector3f fronteira;
-    float posicaoInicial;
-    
-    float danoT;
-};
+        virtual void executar();
+        virtual void imprimir();
+        bool tomarDano();
+
+    protected:
+        Vector3f fronteira;
+        float posicaoInicial;
+
+        float danoT;
+    };
+}
 
 

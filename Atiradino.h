@@ -3,20 +3,27 @@
 #include "Inimigo.h"
 #include "Projetil.h"
 #include "Plataforma.h"
+#include "Corpo_Grafico.h"
+#include "Animadora.h"
 
-class Atiradino : public Inimigo {
-public:
-    Atiradino(Plataforma* plataforma);
-    ~Atiradino();
+using namespace Auxiliares;
+using namespace GerenciadoresEntidades;
 
-    void executar();
-    void imprimir();
+namespace Inimigos {
+    class Atiradino : public Inimigo {
+    public:
+        Atiradino(Plataforma* plataforma = NULL);
+        virtual ~Atiradino();
 
-    Projetil* getProjetil() { return hitbox; }
-private:
+        virtual void executar();
+        void imprimir();
+        virtual void atirar();
 
-    Projetil* hitbox;
-    bool ataquePronto;
+        Projetil* getProjetil() { return hitbox; }
+    protected:
 
-};
+        
+
+    };
+}
 

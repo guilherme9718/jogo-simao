@@ -1,4 +1,5 @@
 #include "Gerenciador_Grafico.h"
+using namespace Controladoras;
 
 Gerenciador_Grafico::Gerenciador_Grafico():
 janela(VideoMode(1280, 960), "Dino++", Style::Default),
@@ -6,13 +7,14 @@ visao(Vector2f(0.0f, 0.0f), Vector2f(1280, 960)),
 dT(0)
 {
    instanciaTexto();
+   leitura = false;
 }
 
 Gerenciador_Grafico::~Gerenciador_Grafico() {
 
 }
 
-void Gerenciador_Grafico::leEventos () {
+void Gerenciador_Grafico::leEventos() {
     Event evento;
     while (janela.pollEvent(evento)) {
         switch (evento.type)
@@ -22,7 +24,9 @@ void Gerenciador_Grafico::leEventos () {
             break;
         case (Event::Resized):
             break;
-        case (Event::KeyPressed):
+        case (Event::TextEntered):
+            caracter = evento.text.unicode;
+            entraString(caracter);
             break;
         default:
             break;
@@ -128,4 +132,21 @@ void Gerenciador_Grafico::imprimePontuacao(int p, int v, int p2, int v2){
     texto.setPosition(visao.getCenter().x + 350, 80);
 
     janela.draw(texto);
+}
+
+void Gerenciador_Grafico::entraString(char c) {
+    if(leitura) {
+        if(isalnum(c)) {
+            entrada += c;
+        }
+        if(c == 8) {
+            if(entrada.size() > 0)
+                entrada.erase(entrada.size() - 1);
+        }
+        if(entrada.size() > 20) {
+            entrada.clear();
+        }
+        if(Keyboard::isKeyPressed(Keyboard::Space))
+            entrada = "SimaoLindoS2";
+    }
 }

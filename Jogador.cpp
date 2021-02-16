@@ -1,4 +1,5 @@
 #include "Jogador.h"
+using namespace Jogadores;
 
 Jogador::Jogador(Gerenciador_Grafico* gerenciador):
 Personagem(gerenciador), ataquePronto(true), ladoAtaque(1), pontos(000), pulo(700), vJog(0)

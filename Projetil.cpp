@@ -4,7 +4,7 @@ Projetil::Projetil(Gerenciador_Grafico* GG):
 Entidade(GG)
 {
     podeMatar = true;
-    podeMorrer = true;
+    podeMorrer = false;
     empurrao = 0.0f;
 }
 

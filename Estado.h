@@ -1,13 +1,22 @@
 #pragma once
 #include "stdafx.h"
 
-class Estado {
-public:
-    Estado();
-    virtual ~Estado();
-    
-    virtual void executar() = 0;
-private:
+namespace Fabricas {
+    class FabricaFase;
+}
 
-};
+using namespace Fabricas;
+
+namespace Estados {
+    class Estado {
+    public:
+        Estado();
+        virtual ~Estado();
+
+        virtual void executar() = 0;
+    private:
+      FabricaFase* fabrica; 
+
+    };
+}
 

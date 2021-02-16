@@ -1,10 +1,11 @@
 #include "Andino.h"
 
+using namespace Inimigos;
+
 Andino::Andino(Plataforma* plataforma):
 Inimigo(plataforma->getGerenciador())
 {
     float aux, aux2;
-
     plat = plataforma;
 
     vidas = 2;
@@ -27,6 +28,8 @@ Inimigo(plataforma->getGerenciador())
     corpo = Vector2f(posicaoInicial, fronteira.z);
     corpo.getCorpo()->setFillColor(Color::White);
     totalT = 0;
+    
+    id = 1;
 }
 
 Andino::~Andino() {

@@ -1,14 +1,20 @@
 #pragma once
 #include "stdafx.h"
 #include "Jogador.h"
+#include "Animadora.h"
+#include "Corpo_Grafico.h"
 
-class Huatli : public Jogador {
-public:
-    Huatli(Gerenciador_Grafico* g = NULL);
-    ~Huatli();
+using namespace GerenciadoresEntidades;
 
-    void mover();
-    void executar();
+namespace Jogadores {
+    class Huatli : public Jogador {
+    public:
+        Huatli(Gerenciador_Grafico* g = NULL);
+        ~Huatli();
 
-private:
-};
+        void mover();
+        void executar();
+
+    private:
+    };
+}

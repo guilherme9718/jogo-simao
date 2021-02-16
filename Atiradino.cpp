@@ -1,5 +1,7 @@
 #include "Atiradino.h"
 
+using namespace Inimigos;
+
 Atiradino::Atiradino(Plataforma* plataforma):
 Inimigo(plataforma->getGerenciador())
 {
@@ -27,10 +29,11 @@ Inimigo(plataforma->getGerenciador())
     totalT = 0;
 
     hitbox = new Projetil(plataforma->getGerenciador());
-    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL);
+    hitbox->getCorpoGraf()->inicializa(Vector2f(100.0f, 100.0f), NULL, Vector2f(30.0f, 30.0f));
     hitbox->getCorpoGraf()->setTextura("Texturas/Efeitos/sunburn.png");
     hitbox->getCorpoGraf()->inicializaAnimadora(Vector2f(0.0f, 0.0f), Vector2u(8, 8), Vector2u(8, 8));
 
+    id = 3;
 }
 
 Atiradino::~Atiradino() {
@@ -47,31 +50,13 @@ void Atiradino::executar()
             ferido = false;
         }
     }
-    if(ataquePronto == false)
-        totalT += pGG->getDt();
-    
+  
     if(ferido)
         ataquePronto = false;
-
-    if(ataquePronto && rand()%400 == 0) {
-        //cout << "a";
-        atacando = true;
-        totalT -= 0.5f;
-        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
-        ataquePronto = false;
-
-    }
-    if(atacando && totalT >= 0.5f) {
-        atacando = false;
-        totalT = 0.0f;
-        ataquePronto = true;
-        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
-    }
-
-    hitbox->getCorpoGraf()->mover(298.0f  * pGG->getDt() * -1, 0.0f);
-    if(atacando)
-        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
-
+    
+    atirar();
+            
+            
     animar(movimento);
 }
 
@@ -83,3 +68,27 @@ void Atiradino::imprimir()
     pGG->desenhar(corpo.getCorpo());
 }
 
+void Atiradino::atirar() {
+    if(ataquePronto == false)
+        totalT += pGG->getDt();
+    
+    if(ataquePronto && rand()%400 == 0) {
+        atacando = true;
+        totalT -= 0.5f;
+        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
+        ataquePronto = false;
+
+    }
+    
+    if(atacando && totalT >= 0.5f) {
+        atacando = false;
+        totalT = 0.0f;
+        ataquePronto = true;
+        hitbox->getCorpoGraf()->setPosicao(corpo.getPosicao().x + (100.0f * -1), corpo.getPosicao().y);
+    }
+    
+    hitbox->getCorpoGraf()->mover(298.0f  * pGG->getDt() * -1, 0.0f);
+    if(atacando)
+        hitbox->getCorpoGraf()->getAnimadora()->atualizarLinhasSequencial(pGG->getDt(), aDireita, Vector2u(8, 8), 5, 0.1f);
+
+}

@@ -1,6 +1,9 @@
 #include "Colisora.h"
 #include "Corpo_Grafico.h"
 #include "Entidade.h"
+using namespace Controladoras;
+using namespace Abstratas;
+using namespace GerenciadoresFases;
 
 Colisora::Colisora() {
 
@@ -8,6 +11,8 @@ Colisora::Colisora() {
 
 Colisora::~Colisora() {
 }
+
+//Função VerificarColisão adaptada de um vídeo do canal no Youtube Hilze Vonck 
 
 bool Colisora::verificarColisao(Corpo_Grafico* c1, Corpo_Grafico* c2, Vector2f& direcao, float f) {
 
