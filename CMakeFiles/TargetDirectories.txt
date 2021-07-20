@@ -1,0 +1,3 @@
+/home/guilherme/Downloads/jogo-simao-Principal/CMakeFiles/rebuild_cache.dir
+/home/guilherme/Downloads/jogo-simao-Principal/CMakeFiles/edit_cache.dir
+/home/guilherme/Downloads/jogo-simao-Principal/CMakeFiles/Dino++.dir

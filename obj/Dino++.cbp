@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Dino++"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Dino++">
+				<Option output="/home/guilherme/Downloads/jogo-simao-Principal/obj/Dino++" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+					<Add directory="/home/guilherme/Downloads/jogo-simao-Principal"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 Dino++"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Dino++/fast">
+				<Option output="/home/guilherme/Downloads/jogo-simao-Principal/obj/Dino++" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/guilherme/Downloads/jogo-simao-Principal/obj"/>
+					<Add directory="/home/guilherme/Downloads/jogo-simao-Principal"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 Dino++/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guilherme/Downloads/jogo-simao-Principal/obj/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Andino.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Andino.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Animadora.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Animadora.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Atiradino.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Atiradino.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/AtiradinoThread.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/AtiradinoThread.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/ChefeDino.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/ChefeDino.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Colisora.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Colisora.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Corpo_Grafico.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Corpo_Grafico.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Ent.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Ent.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Entidade.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Entidade.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Espinho.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Espinho.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Estado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Estado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaFase.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaFase.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaFloresta.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaFloresta.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaMontanha.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FabricaMontanha.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Fase.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Fase.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FaseEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FaseEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Floresta.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Floresta.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FlorestaEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/FlorestaEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Fundo.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Fundo.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Galho.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Galho.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Gerenciador_Grafico.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Gerenciador_Grafico.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Guigo.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Guigo.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Inimigo.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Inimigo.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Jogador.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Jogador.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Jogo.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Jogo.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Lista.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Lista.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/ListaEntidade.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/ListaEntidade.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Menu.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Menu.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPause.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPause.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPauseEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPauseEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPrincipal.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPrincipal.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPrincipalEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MenuPrincipalEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Montanha.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Montanha.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MontanhaEstado.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/MontanhaEstado.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Obstaculo.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Obstaculo.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/PThread.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/PThread.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Pedra.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Pedra.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Persistidora.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Persistidora.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Personagem.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Personagem.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/PilhaEstados.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/PilhaEstados.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Plataforma.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Plataforma.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Projetil.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Projetil.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Titi.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/Titi.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/main.cpp">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/stdafx.h">
+			<Option target="Dino++"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets-none.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="/home/guilherme/Downloads/jogo-simao-Principal/../../../../usr/lib/x86_64-linux-gnu/cmake/SFML/SFMLSharedTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\SFML\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
